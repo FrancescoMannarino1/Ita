@@ -3,1194 +3,630 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio – Manzoni & Leopardi</title>
+<title>Manzoni & Leopardi – Studio Rapido 6 Ore</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0e0e12;
-    --surface: #16161d;
-    --surface2: #1e1e28;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8e6f0;
-    --muted: #7b7890;
-    --accent-m: #c9a86c; /* oro Manzoni */
-    --accent-l: #7eb8a4; /* verde Leopardi */
-    --accent-p: #9b8fd4; /* viola metodo */
-    --red: #e07070;
+    --bg: #0b0b0f;
+    --surface: #13131a;
+    --surface2: #1c1c27;
+    --border: rgba(255,255,255,0.06);
+    --text: #e4e2ed;
+    --muted: #828099;
+    --accent-m: #d1b47d;
+    --accent-l: #89c4af;
+    --accent-p: #a79be3;
+    --red: #e57c7c;
+    --green: #92dcae;
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'DM Sans', sans-serif;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 14px; line-height: 1.75; min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  /* ── HEADER ── */
-  header {
-    padding: 2.5rem 1.5rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, #111118 0%, var(--bg) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: -40px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(201,168,108,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  header::after {
-    content: '';
-    position: absolute;
-    top: -40px; right: -60px;
-    width: 250px; height: 250px;
-    background: radial-gradient(circle, rgba(126,184,164,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .header-inner { max-width: 640px; margin: 0 auto; position: relative; }
-  .header-eyebrow {
-    font-family: var(--font-body);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-  h1 {
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 5vw, 2.4rem);
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--text);
-  }
-  h1 em { font-style: italic; color: var(--accent-m); }
+  header { padding: 2.5rem 1.5rem 1.75rem; border-bottom: 1px solid var(--border); background: linear-gradient(180deg,#101016 0%,var(--bg) 100%); }
+  .header-inner { max-width: 720px; margin: 0 auto; }
+  .header-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+  h1 { font-family: var(--font-display); font-size: clamp(1.8rem,6vw,2.6rem); font-weight: 700; line-height: 1.2; }
+  h1 em { font-style: italic; color: var(--accent-m); font-weight: 400; }
   h1 span { color: var(--accent-l); }
-  .header-sub {
-    margin-top: 0.5rem;
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .header-sub { margin-top: .6rem; font-size: 13px; color: var(--muted); }
 
-  /* ── NAV TABS ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(14,14,18,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 1rem;
-  }
-  .tabs {
-    max-width: 640px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(11,11,15,.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-container { max-width: 720px; margin: 0 auto; }
+  .tabs { display: flex; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 .5rem; }
   .tabs::-webkit-scrollbar { display: none; }
-  .tab {
-    flex-shrink: 0;
-    padding: 0.85rem 1rem;
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    transition: color .2s, border-color .2s;
-    white-space: nowrap;
-  }
+  .tab { flex-shrink: 0; padding: .9rem 1.1rem; font-size: 12px; font-weight: 600; letter-spacing: .05em; color: var(--muted); background: transparent; border: none; border-bottom: 3px solid transparent; cursor: pointer; transition: all .2s; white-space: nowrap; font-family: var(--font-body); }
   .tab:hover { color: var(--text); }
-  .tab.active { color: var(--text); border-bottom-color: var(--text); }
-  .tab[data-section="piano"].active { border-bottom-color: var(--red); color: #f08080; }
-  .tab[data-section="manzoni"].active { border-bottom-color: var(--accent-m); color: var(--accent-m); }
-  .tab[data-section="leopardi"].active { border-bottom-color: var(--accent-l); color: var(--accent-l); }
-  .tab[data-section="metodo"].active { border-bottom-color: var(--accent-p); color: var(--accent-p); }
-  .tab[data-section="schede"].active { border-bottom-color: #a0c4e8; color: #a0c4e8; }
-  .tab[data-section="autori"].active { border-bottom-color: #d4a0c8; color: #d4a0c8; }
-  .tab[data-section="quiz"].active { border-bottom-color: #80c8a0; color: #80c8a0; }
+  .tab[data-s="piano"].active { border-bottom-color: var(--red); color: #f29191; }
+  .tab[data-s="ideologia"].active { border-bottom-color: #dfb2d6; color: #dfb2d6; }
+  .tab[data-s="manzoni"].active { border-bottom-color: var(--accent-m); color: var(--accent-m); }
+  .tab[data-s="leopardi"].active { border-bottom-color: var(--accent-l); color: var(--accent-l); }
+  .tab[data-s="metodo"].active { border-bottom-color: var(--accent-p); color: var(--accent-p); }
+  .tab[data-s="quiz"].active { border-bottom-color: var(--green); color: var(--green); }
 
-  /* ── MAIN ── */
-  main { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
-  .section { display: none; animation: fadeIn .25s ease; }
+  main { max-width: 720px; margin: 0 auto; padding: 2rem 1rem 5rem; }
+  .section { display: none; animation: fadeIn .3s ease-out; }
   .section.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ── SECTION TITLES ── */
-  .section-title {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 500;
-    margin-bottom: 1.25rem;
-    line-height: 1.3;
-  }
-  .section-title .accent { font-style: italic; }
+  .section-title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; margin-bottom: .4rem; }
+  .section-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 1.75rem; }
 
-  /* ── ALERT BANNER ── */
-  .alert {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-    background: rgba(224,112,112,0.08);
-    border: 1px solid rgba(224,112,112,0.2);
-    border-radius: 10px;
-    padding: 0.85rem 1rem;
-    margin-bottom: 1.25rem;
-    font-size: 13px;
-  }
-  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .alert strong { color: #f08080; }
+  .alert { display: flex; gap: 1rem; align-items: flex-start; background: rgba(229,124,124,.06); border: 1px solid rgba(229,124,124,.18); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.75rem; font-size: 13.5px; }
+  .alert-icon { font-size: 18px; flex-shrink: 0; }
+  .alert strong { color: #f29191; font-weight: 600; }
+  .alert-green { background: rgba(146,220,174,.06); border-color: rgba(146,220,174,.2); }
+  .alert-green strong { color: var(--green); }
 
-  /* ── CARD ── */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.1rem 1.25rem;
-    margin-bottom: 0.85rem;
-    transition: border-color .2s;
-  }
-  .card:hover { border-color: rgba(255,255,255,0.13); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.25rem; }
+  .card-m { border-left: 4px solid var(--accent-m); }
+  .card-l { border-left: 4px solid var(--accent-l); }
+  .card-p { border-left: 4px solid var(--accent-p); }
+  .card-v { border-left: 4px solid #dfb2d6; }
+  .card-b { border-left: 4px solid #aaccee; }
 
-  /* card accent left bar */
-  .card-m { border-left: 3px solid var(--accent-m); }
-  .card-l { border-left: 3px solid var(--accent-l); }
-  .card-p { border-left: 3px solid var(--accent-p); }
-  .card-b { border-left: 3px solid #a0c4e8; }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+  .card-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; line-height: 1.3; }
+  .card-sub { font-size: 11px; color: var(--muted); margin-top: 3px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+  .badge { font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 4px 10px; border-radius: 30px; text-transform: uppercase; white-space: nowrap; }
+  .badge-hot { background: rgba(229,124,124,.12); color: #f29191; border: 1px solid rgba(229,124,124,.2); }
+  .badge-done { background: rgba(146,220,174,.12); color: var(--green); border: 1px solid rgba(146,220,174,.2); }
+  .badge-mid { background: rgba(209,180,125,.1); color: var(--accent-m); border: 1px solid rgba(209,180,125,.2); }
 
-  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.6rem; }
-  .card-title {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
-  .card-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .badge {
-    flex-shrink: 0;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 3px 9px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  .badge-hot { background: rgba(224,112,112,0.15); color: #f08080; border: 1px solid rgba(224,112,112,0.25); }
-  .badge-mid { background: rgba(201,168,108,0.12); color: var(--accent-m); border: 1px solid rgba(201,168,108,0.2); }
+  .block-text { font-size: 13.5px; margin-bottom: 1rem; line-height: 1.75; }
+  .block-text strong { color: #fff; font-weight: 600; }
 
-  /* ── ROW ── */
-  .row {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 0.5rem 0.75rem;
-    margin-bottom: 0.45rem;
-    font-size: 13px;
-  }
-  @media(max-width: 480px) {
-    .row { grid-template-columns: 1fr; gap: 0.15rem; }
-  }
-  .row-label {
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding-top: 2px;
-  }
-  .row-val { color: var(--text); }
+  .row { display: grid; grid-template-columns: 120px 1fr; gap: .5rem 1rem; margin-bottom: .75rem; font-size: 13.5px; border-top: 1px solid rgba(255,255,255,.03); padding-top: .75rem; }
+  .row:first-of-type { border-top: none; padding-top: 0; }
+  @media(max-width:540px){ .row { grid-template-columns: 1fr; gap: .2rem; } }
+  .row-label { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding-top: 2px; }
 
-  /* ── TAGS ── */
-  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.75rem; }
-  .tag {
-    font-size: 10px;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 20px;
-    letter-spacing: 0.04em;
-  }
-  .tag-m { background: rgba(201,168,108,0.1); color: var(--accent-m); }
-  .tag-l { background: rgba(126,184,164,0.1); color: var(--accent-l); }
-  .tag-p { background: rgba(155,143,212,0.12); color: #b8aee6; }
-  .tag-b { background: rgba(160,196,232,0.1); color: #a0c4e8; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .tag { font-size: 10.5px; font-weight: 500; padding: 3px 10px; border-radius: 30px; }
+  .tag-m { background: rgba(201,180,125,.08); color: var(--accent-m); }
+  .tag-l { background: rgba(137,196,175,.08); color: var(--accent-l); }
+  .tag-p { background: rgba(167,155,227,.1); color: #c4bcf2; }
 
-  /* ── DIVIDER ── */
-  hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1rem; }
+  @media(max-width:540px){ .phase-grid { grid-template-columns: 1fr; } }
+  .phase-item { background: var(--surface2); border-radius: 12px; padding: 1rem; font-size: 13px; }
+  .phase-item strong { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 
-  /* ── SCHEDULE (Piano) ── */
-  .schedule-item {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 0.75rem;
-    margin-bottom: 0.85rem;
-    align-items: start;
-  }
-  .hour-pill {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    padding: 0.5rem 0.25rem;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--muted);
-    line-height: 1.2;
-  }
-  .hour-pill strong { display: block; font-size: 15px; color: var(--text); }
-  .schedule-body { font-size: 13px; line-height: 1.65; padding-top: 2px; }
-  .schedule-body strong { color: var(--text); font-weight: 500; }
-  .schedule-body span { color: var(--muted); font-size: 12px; display: block; margin-top: 2px; }
+  .step { display: flex; gap: 1.25rem; margin-bottom: 1.5rem; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; background: var(--surface2); border: 1px solid var(--border); color: var(--accent-p); }
+  .step-content { flex: 1; }
+  .step-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: #fff; }
+  .step-body { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 
-  /* ── PHASE GRID ── */
-  .phase-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 0.75rem;
-  }
-  @media(max-width: 480px) {
-    .phase-grid { grid-template-columns: 1fr; }
-  }
-  .phase-item {
-    background: var(--surface2);
-    border-radius: 10px;
-    padding: 0.7rem 0.85rem;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .phase-item strong { display: block; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+  .versus-container { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+  .versus-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem; }
+  .versus-label-center { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--surface2); color: var(--accent-p); padding: 2px 10px; border-radius: 6px; margin-bottom: .75rem; }
+  .versus-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media(max-width:540px){ .versus-split { grid-template-columns: 1fr; gap: 1rem; } }
+  .v-side { font-size: 13.5px; }
+  .v-side strong { display: block; margin-bottom: 4px; font-family: var(--font-display); font-size: 1rem; }
+  .v-side.m strong { color: var(--accent-m); }
+  .v-side.l strong { color: var(--accent-l); }
 
-  /* ── FIGURE RETORICHE TABLE ── */
-  .figure-grid {
-    display: grid;
-    gap: 1px;
-    background: var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 0.85rem;
-  }
-  .figure-row {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    background: var(--surface);
-  }
-  @media(max-width: 480px) {
-    .figure-row { grid-template-columns: 1fr; }
-    .figure-name { border-right: none !important; border-bottom: 1px solid var(--border); }
-  }
-  .figure-row:first-child { border-radius: 10px 10px 0 0; }
-  .figure-row:last-child { border-radius: 0 0 10px 10px; }
-  .figure-name {
-    padding: 0.6rem 0.85rem;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent-p);
-    border-right: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-  }
-  .figure-def {
-    padding: 0.6rem 0.85rem;
-    font-size: 12px;
-    color: var(--text);
-  }
-  .figure-def em { color: var(--muted); font-style: normal; }
+  .figure-table { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; }
+  .figure-row { display: grid; grid-template-columns: 140px 1fr; background: var(--surface); }
+  @media(max-width:540px){ .figure-row { grid-template-columns: 1fr; } .figure-name { border-right: none!important; border-bottom: 1px solid var(--border); } }
+  .figure-name { padding: .85rem 1rem; font-size: 13px; font-weight: 600; color: var(--accent-p); border-right: 1px solid var(--border); display: flex; align-items: center; }
+  .figure-def { padding: .85rem 1rem; font-size: 13px; }
 
-  /* ── STEPS (Metodo) ── */
-  .step {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 0.85rem;
-  }
-  .step-num {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--accent-p);
-  }
-  .step-content { flex: 1; padding-top: 4px; }
-  .step-title { font-weight: 500; font-size: 13px; margin-bottom: 3px; }
-  .step-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  /* PIANO ORE */
+  .ore-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
+  .ora-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; font-size: 13.5px; }
+  .ora-badge { flex-shrink: 0; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px; font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: .06em; white-space: nowrap; }
+  .ora-body strong { display: block; color: #fff; font-weight: 600; margin-bottom: 3px; }
+  .ora-body span { color: var(--muted); }
 
-  /* ── EVOLUTION TIMELINE ── */
-  .timeline {
-    position: relative;
-    padding-left: 1.5rem;
-    margin: 1rem 0;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px; top: 8px; bottom: 8px;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--accent-l), rgba(126,184,164,0.1));
-  }
-  .tl-item {
-    position: relative;
-    margin-bottom: 0.85rem;
-    font-size: 13px;
-  }
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -1.1rem;
-    top: 6px;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent-l);
-    border: 2px solid var(--bg);
-  }
-  .tl-label { font-weight: 500; color: var(--accent-l); }
-  .tl-desc { color: var(--muted); margin-top: 1px; }
+  /* QUIZ SCELTA MULTIPLA */
+  .quiz-setup { margin-bottom: 2rem; }
+  .quiz-setup-title { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
+  .quiz-topic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+  @media(max-width:540px){ .quiz-topic-grid { grid-template-columns: 1fr; } }
+  .quiz-topic-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: .9rem 1rem; text-align: left; cursor: pointer; font-family: var(--font-body); color: var(--muted); transition: all .2s; line-height: 1.4; }
+  .quiz-topic-btn:hover { border-color: rgba(255,255,255,.15); color: var(--text); }
+  .quiz-topic-btn.selected { color: var(--text); border-color: var(--green); background: rgba(146,220,174,.05); }
+  .quiz-topic-btn strong { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 2px; }
+  .quiz-topic-btn.tm.selected strong { color: var(--accent-m); }
+  .quiz-topic-btn.tl.selected strong { color: var(--accent-l); }
+  .quiz-topic-btn.tp.selected strong { color: var(--accent-p); }
+  .quiz-topic-btn.ta.selected strong { color: #aaccee; }
 
-  /* ── AUTORI SECTION ── */
-  .author-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 1.25rem;
-  }
-  @media(max-width: 560px) {
-    .author-hero { grid-template-columns: 1fr; }
-  }
-  .author-card {
-    background: var(--surface);
-    border-radius: 14px;
-    padding: 1.1rem 1.1rem 1rem;
-    border: 1px solid var(--border);
-    transition: border-color .2s;
-  }
-  .author-card:hover { border-color: rgba(255,255,255,0.13); }
-  .author-card.card-m { border-top: 3px solid var(--accent-m); }
-  .author-card.card-l { border-top: 3px solid var(--accent-l); }
-  .author-name {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
-  }
-  .author-card.card-m .author-name { color: var(--accent-m); }
-  .author-card.card-l .author-name { color: var(--accent-l); }
-  .author-dates { font-size: 11px; color: var(--muted); margin-bottom: 0.75rem; }
-  .author-kv { font-size: 12px; line-height: 1.55; color: var(--muted); margin-bottom: 4px; }
-  .author-kv strong { color: var(--text); font-weight: 500; }
+  #quiz-start-btn { display: block; width: 100%; padding: .95rem; background: rgba(146,220,174,.08); border: 1px solid rgba(146,220,174,.25); border-radius: 12px; color: var(--green); font-family: var(--font-body); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: .05em; }
+  #quiz-start-btn:hover { background: rgba(146,220,174,.15); }
 
-  .versus-block {
-    background: var(--surface2);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 0.85rem;
-  }
-  .versus-header {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 0.55rem 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .versus-row {
-    display: grid;
-    grid-template-columns: 1fr 40px 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-  }
-  @media(max-width: 560px) {
-    .versus-row { grid-template-columns: 1fr; }
-    .versus-label { padding: 0.3rem !important; border-left: none !important; border-right: none !important; background: var(--surface2) !important; color: var(--accent-p) !important; font-size: 10px !important; }
-    .versus-cell.l { text-align: left; }
-  }
-  .versus-row:last-child { border-bottom: none; }
-  .versus-cell {
-    padding: 0.55rem 0.85rem;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .versus-cell.m { color: var(--accent-m); }
-  .versus-cell.l { color: var(--accent-l); text-align: right; }
-  .versus-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    background: var(--surface);
-  }
-  .poetica-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 1.1rem;
-    margin-bottom: 0.75rem;
-  }
-  .poetica-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.6rem;
-  }
-  .poetica-block.pm .poetica-title { color: var(--accent-m); }
-  .poetica-block.pl .poetica-title { color: var(--accent-l); }
-  .poetica-item {
-    font-size: 12.5px;
-    color: var(--muted);
-    padding: 0.35rem 0;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.55;
-  }
-  .poetica-item:last-child { border-bottom: none; }
-  .poetica-item strong { color: var(--text); }
+  .quiz-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.5rem; animation: fadeIn .3s ease; }
+  .quiz-q-num { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: .6rem; }
+  .quiz-q-topic { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: var(--surface2); color: var(--muted); margin-bottom: .75rem; margin-left: 8px; text-transform: uppercase; letter-spacing: .06em; }
+  .quiz-question { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; line-height: 1.45; color: #fff; margin-bottom: 1.25rem; }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.25rem; }
+  .quiz-option { display: flex; align-items: flex-start; gap: .75rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: .9rem 1rem; cursor: pointer; font-size: 13.5px; color: var(--text); transition: all .2s; text-align: left; font-family: var(--font-body); line-height: 1.5; }
+  .quiz-option:hover { border-color: rgba(255,255,255,.15); background: rgba(255,255,255,.04); }
+  .quiz-option .opt-letter { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 1px; }
+  .quiz-option.correct { border-color: rgba(146,220,174,.5); background: rgba(146,220,174,.08); }
+  .quiz-option.correct .opt-letter { background: rgba(146,220,174,.2); border-color: rgba(146,220,174,.5); color: var(--green); }
+  .quiz-option.wrong { border-color: rgba(229,124,124,.5); background: rgba(229,124,124,.08); }
+  .quiz-option.wrong .opt-letter { background: rgba(229,124,124,.2); border-color: rgba(229,124,124,.5); color: var(--red); }
+  .quiz-option.disabled { pointer-events: none; opacity: .6; }
+  .quiz-option.correct.disabled { opacity: 1; }
+  .quiz-option.wrong.disabled { opacity: 1; }
+  .quiz-explanation { background: var(--surface2); border: 1px solid rgba(146,220,174,.15); border-radius: 12px; padding: 1.1rem 1.25rem; font-size: 13.5px; line-height: 1.7; margin-top: 1.25rem; display: none; }
+  .quiz-explanation.visible { display: block; }
+  .quiz-explanation-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green); margin-bottom: .5rem; }
+  .quiz-next-btn { display: block; width: 100%; padding: .85rem; background: rgba(146,220,174,.08); border: 1px solid rgba(146,220,174,.3); border-radius: 12px; color: var(--green); font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; margin-top: 1.25rem; display: none; }
+  .quiz-next-btn.visible { display: block; }
+  .quiz-next-btn:hover { background: rgba(146,220,174,.15); }
 
-  /* ── QUIZ SECTION ── */
-  .quiz-topic-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 1.25rem;
-  }
-  @media(max-width: 520px) {
-    .quiz-topic-grid { grid-template-columns: 1fr; }
-  }
-  .quiz-topic-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0.8rem 0.9rem;
-    text-align: left;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 12px;
-    color: var(--muted);
-    transition: all .2s;
-    line-height: 1.4;
-  }
-  .quiz-topic-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
-  .quiz-topic-btn.selected { color: var(--text); border-color: #80c8a0; background: rgba(128,200,160,0.07); }
-  .quiz-topic-btn strong { display: block; font-size: 13px; font-weight: 500; margin-bottom: 2px; }
-  .quiz-topic-btn.tm strong { color: var(--accent-m); }
-  .quiz-topic-btn.tl strong { color: var(--accent-l); }
-  .quiz-topic-btn.tp strong { color: var(--accent-p); }
-  .quiz-topic-btn.tb strong { color: #a0c4e8; }
+  .quiz-score { text-align: center; padding: 2.5rem 1.5rem; background: var(--surface); border: 1px solid rgba(146,220,174,.2); border-radius: 18px; }
+  .quiz-score-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: .5rem; }
+  .quiz-score-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 1.25rem; }
+  .quiz-score-msg { font-size: 14px; color: var(--text); margin-bottom: 1.5rem; line-height: 1.6; }
+  .quiz-restart-btn { padding: .75rem 2rem; background: rgba(146,220,174,.08); border: 1px solid rgba(146,220,174,.3); border-radius: 12px; color: var(--green); font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; }
+  .quiz-restart-btn:hover { background: rgba(146,220,174,.15); }
 
-  .quiz-controls {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 1.25rem;
-  }
-  .quiz-difficulty-btn {
-    flex: 1;
-    padding: 0.55rem 0.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all .2s;
-    text-align: center;
-    letter-spacing: 0.04em;
-  }
-  .quiz-difficulty-btn.active-diff { border-color: #80c8a0; color: #80c8a0; background: rgba(128,200,160,0.07); }
+  .progress-bar-wrap { background: var(--surface2); border-radius: 6px; height: 4px; margin-bottom: 1.25rem; }
+  .progress-bar-fill { height: 4px; border-radius: 6px; background: var(--green); transition: width .4s ease; }
 
-  #quiz-start-btn {
-    display: block;
-    width: 100%;
-    padding: 0.8rem 1rem;
-    background: rgba(128,200,160,0.1);
-    border: 1px solid rgba(128,200,160,0.3);
-    border-radius: 10px;
-    color: #80c8a0;
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all .2s;
-    margin-bottom: 1.5rem;
-  }
-  #quiz-start-btn:hover { background: rgba(128,200,160,0.18); }
-  #quiz-start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-  .quiz-area { min-height: 120px; }
-
-  .quiz-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.25rem;
-    margin-bottom: 0.85rem;
-    animation: fadeIn .3s ease;
-  }
-  .quiz-q-num {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #80c8a0;
-    margin-bottom: 0.5rem;
-  }
-  .quiz-question {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.45;
-    color: var(--text);
-    margin-bottom: 1rem;
-  }
-  .quiz-hint {
-    font-size: 12px;
-    color: var(--muted);
-    font-style: italic;
-    margin-bottom: 1rem;
-    padding: 0.55rem 0.75rem;
-    background: var(--surface2);
-    border-radius: 8px;
-    border-left: 2px solid var(--accent-p);
-    display: none;
-  }
-  .quiz-hint.visible { display: block; }
-  .quiz-answer-box {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.85rem 1rem;
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.6;
-    display: none;
-    animation: fadeIn .25s ease;
-  }
-  .quiz-answer-box.visible { display: block; }
-  .quiz-answer-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #80c8a0;
-    margin-bottom: 0.4rem;
-  }
-  .quiz-btn-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 0.75rem;
-    flex-wrap: wrap;
-  }
-  .quiz-btn {
-    padding: 0.5rem 0.9rem;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    color: var(--muted);
-    transition: all .2s;
-  }
-  .quiz-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-  .quiz-btn.primary { border-color: rgba(128,200,160,0.3); color: #80c8a0; background: rgba(128,200,160,0.07); }
-  .quiz-btn.primary:hover { background: rgba(128,200,160,0.14); }
-
-  .quiz-loading {
-    text-align: center;
-    padding: 2rem 1rem;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .quiz-loading .spin {
-    display: inline-block;
-    width: 24px; height: 24px;
-    border: 2px solid var(--border);
-    border-top-color: #80c8a0;
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
-    margin-bottom: 0.75rem;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .quiz-score {
-    text-align: center;
-    padding: 1.5rem 1rem;
-    background: var(--surface);
-    border: 1px solid rgba(128,200,160,0.2);
-    border-radius: 14px;
-    animation: fadeIn .3s ease;
-  }
-  .quiz-score-num {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #80c8a0;
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .quiz-score-label { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
-
-  /* ── BUTTON ── */
-  .btn-cta {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--muted);
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 0.75rem;
-    transition: all .2s;
-    letter-spacing: 0.04em;
-  }
-  .btn-cta:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+  em { font-style: italic; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <div class="header-eyebrow">Analisi del testo · 8 ore di studio</div>
-    <h1><em>Manzoni</em> &amp; <span>Leopardi</span></h1>
-    <p class="header-sub">Tutto il materiale in un'unica guida. Schede, metodo, opere probabili.</p>
+    <div class="header-eyebrow">Letteratura Italiana – Esame</div>
+    <h1>Manzoni <em>&amp;</em> <span>Leopardi</span></h1>
+    <p class="header-sub">Guida completa con quiz a scelta multipla · Piano studio 6 ore</p>
   </div>
 </header>
 
 <nav>
-  <div class="tabs">
-    <button class="tab active" data-section="piano" onclick="show('piano',this)">⏱ Piano 8h</button>
-    <button class="tab" data-section="manzoni" onclick="show('manzoni',this)">Manzoni</button>
-    <button class="tab" data-section="leopardi" onclick="show('leopardi',this)">Leopardi</button>
-    <button class="tab" data-section="metodo" onclick="show('metodo',this)">Metodo</button>
-    <button class="tab" data-section="schede" onclick="show('schede',this)">Schede rapide</button>
-    <button class="tab" data-section="autori" onclick="show('autori',this)">✦ Autori &amp; Poetica</button>
-    <button class="tab" data-section="quiz" onclick="show('quiz',this)">⊕ Quiz IA</button>
+  <div class="nav-container">
+    <div class="tabs">
+      <button class="tab active" data-s="piano" onclick="show('piano',this)">⏱ Piano 6 Ore</button>
+      <button class="tab" data-s="ideologia" onclick="show('ideologia',this)">✦ Filosofia</button>
+      <button class="tab" data-s="manzoni" onclick="show('manzoni',this)">✒️ Manzoni</button>
+      <button class="tab" data-s="leopardi" onclick="show('leopardi',this)">🌿 Leopardi</button>
+      <button class="tab" data-s="metodo" onclick="show('metodo',this)">🛠 Metodo</button>
+      <button class="tab" data-s="quiz" onclick="show('quiz',this)">⊕ Quiz</button>
+    </div>
   </div>
 </nav>
 
 <main>
 
+<!-- ===== PIANO 6 ORE ===== -->
 <div id="piano" class="section active">
   <div class="alert">
-    <span class="alert-icon">🎯</span>
-    <div><strong>Regola d'oro:</strong> inizia da Leopardi — ha più opere non ancora fatte, quindi è il candidato più probabile. Manzoni viene subito dopo.</div>
+    <span class="alert-icon">⚡</span>
+    <div><strong>Hai 6 ore:</strong> Segui questo piano nell'ordine esatto. Prima leggi, poi fai il quiz. Non saltare la filosofia: è la base di tutto.</div>
   </div>
 
-  <div class="card card-m">
-    <div class="card-title" style="margin-bottom:.9rem">Piano dettagliato — 8 ore</div>
+  <p class="section-title">Piano di Studio Intensivo</p>
+  <p class="section-subtitle">Ogni blocco include lettura + ripasso. Segui l'ordine.</p>
 
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ora 1</strong></div>
-      <div class="schedule-body">
-        <strong>Ripasso delle opere già fatte</strong>
-        <span>Rileggi i tuoi appunti su 5 maggio, Marzo 1821, Coro III Adelchi, Cap. 21, A Silvia, La Ginestra. Identifica i temi chiave di ogni autore — ti serviranno come base per i collegamenti.</span>
+  <div class="ore-grid">
+    <div class="ora-item">
+      <div class="ora-badge">ORA 1</div>
+      <div class="ora-body">
+        <strong>Tab "Filosofia" – I due sistemi di pensiero</strong>
+        <span>Studia Provvidenza vs Pessimismo. Comprendi la differenza tra Pessimismo Storico e Cosmico. Questi concetti tornano in OGNI domanda.</span>
       </div>
     </div>
-
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ore 2–3</strong></div>
-      <div class="schedule-body">
-        <strong>Leopardi non fatto — priorità alta</strong>
-        <span>Studia in ordine: <em>L'infinito</em>, <em>Il sabato del villaggio</em>, <em>Canto notturno</em>, <em>La quiete dopo la tempesta</em>. Usa le schede nella sezione Leopardi.</span>
+    <div class="ora-item">
+      <div class="ora-badge">ORA 2</div>
+      <div class="ora-body">
+        <strong>Tab "Manzoni" – Leggi tutte le opere</strong>
+        <span>Adelchi (Ermengarda + Coro III), Pentecoste, Cinque Maggio, Marzo 1821, Promessi Sposi cap. 21. Usa i tag colorati come parole chiave.</span>
       </div>
     </div>
-
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ora 4</strong></div>
-      <div class="schedule-body">
-        <strong>Manzoni non fatto</strong>
-        <span>Studia il Coro IV Adelchi ("Dagli atri muscosi…"), la struttura degli Inni Sacri (La Pentecoste), e i caratteri del romanzo storico.</span>
+    <div class="ora-item">
+      <div class="ora-badge">ORA 3</div>
+      <div class="ora-body">
+        <strong>Tab "Leopardi" – Leggi tutte le opere</strong>
+        <span>L'Infinito, Sabato del Villaggio, Canto Notturno, A Silvia, La Ginestra. Per ogni testo: qual è il concetto filosofico dietro?</span>
       </div>
     </div>
-
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ora 5</strong></div>
-      <div class="schedule-body">
-        <strong>Figure retoriche e metrica</strong>
-        <span>Ripassa le figure tipiche di entrambi. Sono decisive nell'analisi — vedi la sezione Metodo.</span>
+    <div class="ora-item">
+      <div class="ora-badge">ORA 4</div>
+      <div class="ora-body">
+        <strong>Tab "Metodo" – Figure retoriche + confronti</strong>
+        <span>Studia enjambement, anastrofe, antitesi. Poi rileggi i "Fili Conduttori" nel tab Filosofia per saper collegare i due autori.</span>
       </div>
     </div>
-
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ora 6</strong></div>
-      <div class="schedule-body">
-        <strong>Simulazione pratica</strong>
-        <span>Prendi un testo non studiato (es. L'infinito o Coro IV Adelchi) e scrivi parafrasi + analisi in 30 minuti. Poi correggi con le schede.</span>
+    <div class="ora-item">
+      <div class="ora-badge">ORA 5</div>
+      <div class="ora-body">
+        <strong>Tab "Quiz" – Fai TUTTO il quiz: Manzoni + Leopardi + Metodo</strong>
+        <span>Fai ogni categoria. Per ogni risposta sbagliata, torna al tab corrispondente e rileggi quella sezione.</span>
       </div>
     </div>
-
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ora 7</strong></div>
-      <div class="schedule-body">
-        <strong>Ripasso temi + collegamenti</strong>
-        <span>Prepara 2–3 fili tematici che collegano le opere dei due autori — valgono punti extra.</span>
-      </div>
-    </div>
-
-    <div class="schedule-item">
-      <div class="hour-pill"><strong>Ora 8</strong></div>
-      <div class="schedule-body">
-        <strong>Ripasso veloce + stop</strong>
-        <span>Rileggi le schede riassuntive, poi smetti. Il cervello consolida durante il sonno. Non studiare fino all'ultimo.</span>
+    <div class="ora-item">
+      <div class="ora-badge">ORA 6</div>
+      <div class="ora-body">
+        <strong>Ripasso finale – Rifare il quiz sulle categorie deboli</strong>
+        <span>Rileggi i concetti che hai sbagliato. Poi scrivi su un foglio (senza guardare) i punti chiave di ogni opera. Se riesci, sei pronto.</span>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title" style="margin-bottom:.75rem">Fili tematici per i collegamenti</div>
+    <div class="card-title" style="margin-bottom:1rem">I 4 Concetti Chiave da Memorizzare Subito</div>
     <div class="phase-grid">
-      <div class="phase-item"><strong>Dolore umano</strong>Manzoni → Provvidenza come risposta. Leopardi → nessuna risposta, solo resistenza.</div>
-      <div class="phase-item"><strong>Storia e vinti</strong>Cori Adelchi ↔ popoli senza protagonismo. Leopardi: storia come vanità.</div>
-      <div class="phase-item"><strong>Natura</strong>Manzoni: sfondo provvidenziale. Leopardi: prima madre, poi matrigna indifferente.</div>
-      <div class="phase-item"><strong>Giovinezza</strong>A Silvia, Sabato del villaggio: l'illusione che precede la disillusione.</div>
+      <div class="phase-item">
+        <strong>1. Provvida Sventura (Manzoni)</strong>
+        Il dolore non è uno spreco: è un dono di Dio che purifica l'anima. Ermengarda soffre → viene purificata → va in paradiso.
+      </div>
+      <div class="phase-item">
+        <strong>2. Teoria del Piacere (Leopardi)</strong>
+        L'uomo desidera un piacere infinito, ma la realtà è sempre limitata. Da qui nasce la noia e l'infelicità universale.
+      </div>
+      <div class="phase-item">
+        <strong>3. Pessimismo Storico → Cosmico</strong>
+        Prima: colpa della civiltà che distrugge le illusioni. Dopo: colpa della Natura stessa, matrigna indifferente.
+      </div>
+      <div class="phase-item">
+        <strong>4. Social Catena (Leopardi)</strong>
+        Risposta finale di Leopardi: gli uomini devono unirsi solidalmente contro la Natura nemica, non combattersi tra loro.
+      </div>
     </div>
   </div>
 </div>
 
+<!-- ===== FILOSOFIA ===== -->
+<div id="ideologia" class="section">
+  <p class="section-title">I Sistemi di Pensiero</p>
+  <p class="section-subtitle">La base filosofica che spiega tutto il resto.</p>
+
+  <div class="versus-container">
+    <div class="versus-card">
+      <div class="versus-label-center">La Matrice Filosofica</div>
+      <div class="versus-split">
+        <div class="v-side m">
+          <strong>Manzoni: Fede e Provvidenza</strong>
+          Si converte al cattolicesimo nel 1810. Da quel momento la sua visione del mondo si fonda sulla <em>Provvidenza</em>: Dio guida la storia con un disegno misterioso, anche attraverso il dolore e le ingiustizie. L'uomo non capisce il piano divino, ma deve affidarsi alla fede. La sofferenza terrena ha sempre un senso superiore.
+        </div>
+        <div class="v-side l">
+          <strong>Leopardi: Materialismo Radicale</strong>
+          Rifiuto totale di ogni spiegazione religiosa o spirituale. La conoscenza deriva solo dai sensi (Sensismo). L'uomo tende naturalmente a un <em>piacere infinito</em> che la realtà non può mai soddisfare. Questo divario genera la <em>Noia</em>, l'infelicità fondamentale dell'esistenza. Non esiste nessun Dio a consolare.
+        </div>
+      </div>
+    </div>
+
+    <div class="versus-card">
+      <div class="versus-label-center">La Poetica (come deve essere la letteratura)</div>
+      <div class="versus-split">
+        <div class="v-side m">
+          <strong>Manzoni: Il Vero, l'Utile, l'Interessante</strong>
+          Scritto nella <em>Lettera a Cesare D'Azeglio</em> (1823):<br>
+          • <strong>Il vero per oggetto</strong> = trattare la storia reale, non il fantastico<br>
+          • <strong>L'utile per iscopo</strong> = avere una funzione educativa e morale<br>
+          • <strong>L'interessante per mezzo</strong> = usare una lingua accessibile a tutti
+        </div>
+        <div class="v-side l">
+          <strong>Leopardi: Poetica del Vago e dell'Indefinito</strong>
+          Teorizzata nello <em>Zibaldone</em>: la poesia non deve descrivere la realtà in modo preciso e arido, ma evocare sensazioni vaghe, indefinite, sfumate. Solo ciò che è <em>parzialmente nascosto</em> permette all'immaginazione di costruire il piacere infinito che la realtà nega.
+        </div>
+      </div>
+    </div>
+
+    <div class="versus-card">
+      <div class="versus-label-center">Il Dolore: differenze profonde</div>
+      <div class="versus-split">
+        <div class="v-side m">
+          <strong>Manzoni: il dolore redime</strong>
+          Il dolore è uno strumento della Provvidenza. Non è inutile: purifica l'anima dai peccati (propri o del proprio popolo) e apre la via alla salvezza eterna. Esempio: Ermengarda soffre → viene purificata → si salva.
+        </div>
+        <div class="v-side l">
+          <strong>Leopardi: il dolore è ontologico</strong>
+          Il dolore non redime nulla. È semplicemente la condizione biologica naturale di ogni essere vivente. Non c'è nessun Dio che lo trasforma in salvezza. È solo male, senza scopo né fine.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-v">
+    <div class="card-title" style="margin-bottom:1rem">L'Evoluzione del Pessimismo Leopardiano</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Pessimismo Storico (1819–1823)</div>
+        <div class="step-body">
+          La <strong>Natura è vista come una madre benigna</strong> che ha donato agli uomini le <em>illusioni</em> per proteggerli dalla verità. L'infelicità attuale è colpa della <strong>ragione moderna e della civiltà</strong>, che hanno distrutto le illusioni rivelando il nulla. Gli antichi erano più felici perché vivevano nelle illusioni.
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Pessimismo Cosmico (dal 1824)</div>
+        <div class="step-body">
+          Svolta radicale. La <strong>Natura si rivela una matrigna indifferente</strong>: non è mai stata madre. È solo un meccanismo chimico-fisico cieco che produce e distrugge senza curarsi dell'uomo. La sofferenza non è colpa della civiltà: è <strong>universale e ontologica</strong>, presente in ogni essere vivente da sempre. Non c'è scampo.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom:1rem">Fili Conduttori per l'Esame (collega i due autori)</div>
+    <div class="phase-grid">
+      <div class="phase-item">
+        <strong>Il Dolore</strong>
+        Manzoni: redime e salva (Provvida Sventura). Leopardi: è male biologico senza scopo.
+      </div>
+      <div class="phase-item">
+        <strong>La Storia</strong>
+        Manzoni: la storia è il campo in cui si manifesta il giudizio divino. Leopardi: la storia non porta progresso, la civiltà aumenta solo la coscienza dell'infelicità.
+      </div>
+      <div class="phase-item">
+        <strong>La Natura</strong>
+        Manzoni: creazione di Dio, ordine provvidenziale. Leopardi (pessimismo storico): madre benigna. Leopardi (cosmico): matrigna crudele.
+      </div>
+      <div class="phase-item">
+        <strong>L'Uomo Comune / I Vinti</strong>
+        Manzoni dà voce ai poveri e agli oppressi (Lucia, i Latini). Leopardi dà voce all'uomo come vittima della Natura.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MANZONI ===== -->
 <div id="manzoni" class="section">
-  <p class="section-title">Opere probabili di <em class="accent">Manzoni</em></p>
+  <p class="section-title">Opere di Alessandro Manzoni</p>
+  <p class="section-subtitle">Leggi attentamente ogni scheda. Concentrati sui concetti in grassetto.</p>
 
   <div class="card card-m">
     <div class="card-header">
       <div>
-        <div class="card-title">Coro dell'atto IV dell'Adelchi</div>
-        <div class="card-sub">"Dagli atri muscosi, dai Fori cadenti…" — 1822</div>
+        <div class="card-title">Coro dell'Atto IV dell'Adelchi</div>
+        <div class="card-sub">"Sparsa le trecce morbide" — La morte di Ermengarda</div>
       </div>
-      <span class="badge badge-hot">Alta prob.</span>
+      <span class="badge badge-hot">Alta probabilità</span>
     </div>
-    <div class="row"><div class="row-label">Tema</div><div class="row-val">La condizione dei vinti: i Longobardi sconfitti dai Franchi, metafora dei popoli sottomessi nella storia. Riflessione sulla sofferenza di chi non ha protagonismo storico.</div></div>
-    <div class="row"><div class="row-label">Metro</div><div class="row-val">Settenari e novenari in strofe regolari. Tono lirico-elegiaco.</div></div>
-    <div class="row"><div class="row-label">Figure</div><div class="row-val">Anafora ("Dagli atri… dai Fori… dalle torri…"), metafora, apostrofe ai vinti.</div></div>
-    <div class="row"><div class="row-label">Visione</div><div class="row-val">La Provvidenza è silenziosa: il dolore rimane senza risposta, a differenza dei Promessi Sposi. La storia è dominio del più forte.</div></div>
-    <div class="row"><div class="row-label">Collega a</div><div class="row-val">Coro III Adelchi (già fatto): stesso tema sofferenza storica. La Ginestra di Leopardi: entrambi trattano i "vinti" della storia.</div></div>
-    <div class="tags">
-      <span class="tag tag-m">storia</span><span class="tag tag-m">vinti</span><span class="tag tag-m">dolore</span><span class="tag tag-m">Romanticismo</span>
+    <p class="block-text"><strong>Chi è Ermengarda?</strong> È la principessa longobarda che Carlo Magno ha sposato per ragioni politiche, poi ripudiata (abbandonata) quando l'alleanza non serviva più. Umiliata, si ritira a morire in un monastero.</p>
+    <p class="block-text"><strong>Il concetto chiave – Provvida Sventura:</strong> Ermengarda appartiene ai Longobardi, un popolo di <em>oppressori</em> storici. Il suo dolore immenso (il ripudio) diventa paradossalmente un <em>dono di Dio</em>: la sofferenza la purifica dalle colpe storiche del suo popolo e la colloca tra i "vinti" della terra. Grazie a questo dolore, può salvarsi e andare in paradiso. La sventura è <em>provvida</em> (= utile, providenziale) perché porta alla salvezza.</p>
+    <div class="row">
+      <div class="row-label">Stile</div>
+      <div class="row-val">Strofe di sei settenari con ritmo elegiaco (triste, lento). Alterna scene narrative con riflessioni filosofiche profonde sulla storia e il destino.</div>
     </div>
+    <div class="tags"><span class="tag tag-m">provvida sventura</span><span class="tag tag-m">i vinti</span><span class="tag tag-m">ermengarda</span><span class="tag tag-m">longobardi</span></div>
   </div>
 
   <div class="card card-m">
     <div class="card-header">
       <div>
-        <div class="card-title">La Pentecoste (Inni Sacri)</div>
-        <div class="card-sub">1817 — il più celebre degli Inni Sacri</div>
+        <div class="card-title">Coro dell'Atto III dell'Adelchi</div>
+        <div class="card-sub">"Dagli atri muscosi, dai fori cadenti"</div>
       </div>
-      <span class="badge badge-mid">Probabile</span>
+      <span class="badge badge-done">Già trattato</span>
     </div>
-    <div class="row"><div class="row-label">Tema</div><div class="row-val">La discesa dello Spirito Santo e la forza unificatrice della fede cristiana che abbatte le differenze sociali tra gli uomini.</div></div>
-    <div class="row"><div class="row-label">Metro</div><div class="row-val">Strofe di settenari con schema rimato regolare.</div></div>
-    <div class="row"><div class="row-label">Figure</div><div class="row-val">Apostrofe allo Spirito, metafore di luce e fuoco, antitesi ricco/povero.</div></div>
-    <div class="row"><div class="row-label">Collega a</div><div class="row-val">Provvidenza del Cap. 21 e finale dei Promessi Sposi: la fede come risposta al dolore.</div></div>
-    <div class="tags">
-      <span class="tag tag-m">fede</span><span class="tag tag-m">Provvidenza</span><span class="tag tag-m">uguaglianza</span>
-    </div>
+    <p class="block-text"><strong>Il contenuto:</strong> Descrive la massa dei Latini (popolazione autoctona italica) ridotti a plebe anonima che si illude che i Franchi di Carlo Magno siano venuti a liberarli dalla schiavitù dei Longobardi.</p>
+    <p class="block-text"><strong>Il messaggio di Manzoni:</strong> I Franchi combattono solo per i propri scopi politici, non per la libertà dei Latini. Questi ultimi <em>cambieranno solo padrone</em>. Manzoni condanna duramente la <strong>passività politica</strong>: un popolo non può aspettare che altri lo liberino, deve conquistarsi la libertà da solo.</p>
+    <div class="tags"><span class="tag tag-m">latini</span><span class="tag tag-m">passività</span><span class="tag tag-m">condanna storica</span></div>
   </div>
 
   <div class="card card-m">
     <div class="card-header">
       <div>
-        <div class="card-title">Romanzo storico — Promessi Sposi</div>
-        <div class="card-sub">Possibile testo da un capitolo diverso dal 21</div>
+        <div class="card-title">La Pentecoste</div>
+        <div class="card-sub">Dagli "Inni Sacri" — Redazione definitiva: 1822</div>
       </div>
+      <span class="badge badge-done">Nuovo</span>
     </div>
-    <div class="row"><div class="row-label">Elementi fissi</div><div class="row-val">Provvidenza divina, umili come protagonisti, storia reale come sfondo (peste, carestia, dominazione spagnola), ironia del narratore.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Italiano "sciacquato in Arno": lingua toscana fiorentina, periodare lungo ma chiaro, dialogo realistico.</div></div>
-    <div class="row"><div class="row-label">Tip</div><div class="row-val">Individua sempre: voce del narratore (onnisciente + ironico), riferimenti storici, presenza della Provvidenza.</div></div>
-    <div class="tags">
-      <span class="tag tag-m">romanzo storico</span><span class="tag tag-m">Provvidenza</span><span class="tag tag-m">umili</span>
-    </div>
+    <p class="block-text"><strong>L'evento descritto:</strong> La discesa dello Spirito Santo sugli Apostoli (evento biblico della Pentecoste).</p>
+    <p class="block-text"><strong>Il concetto chiave – Democrazia dello Spirito:</strong> Manzoni trasforma l'evento religioso in una rivoluzione sociale. Lo Spirito Santo abbatte ogni barriera di classe, razza e condizione sociale. Davanti a Dio <em>lo schiavo è uguale al padrone</em>. La religione cristiana diventa così una forza rivoluzionaria che fonda l'uguaglianza morale tra tutti gli esseri umani.</p>
+    <div class="tags"><span class="tag tag-m">uguaglianza</span><span class="tag tag-m">spirito santo</span><span class="tag tag-m">rivoluzione spirituale</span></div>
   </div>
 
-  <hr>
-  <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem">Temi ricorrenti di Manzoni</p>
-  <div class="phase-grid">
-    <div class="phase-item"><strong>Provvidenza divina</strong>Guida gli umili anche nel dolore.</div>
-    <div class="phase-item"><strong>Storia e vinti</strong>Il popolo subisce la storia, non la fa.</div>
-    <div class="phase-item"><strong>Fede e redenzione</strong>La conversione come svolta (Innominato).</div>
-    <div class="phase-item"><strong>Romanticismo cristiano</strong>Emozione + dottrina cattolica.</div>
+  <div class="card card-m">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Il Cinque Maggio</div>
+        <div class="card-sub">Ode Civile e Religiosa — Luglio 1821</div>
+      </div>
+      <span class="badge badge-done">Già trattato</span>
+    </div>
+    <p class="block-text"><strong>Il soggetto:</strong> La morte di Napoleone Bonaparte (5 maggio 1821) in esilio a Sant'Elena.</p>
+    <p class="block-text"><strong>Il messaggio:</strong> Napoleone ha vissuto tra gloria immensa e cadute rovinose. Nella solitudine dell'esilio, nella disperazione del fallimento umano, <em>Dio scende a consolarlo</em> attraverso la Fede. La gloria terrena è nulla di fronte all'eternità. La Provvidenza si manifesta anche nella vita del più grande conquistatore del mondo.</p>
+    <div class="tags"><span class="tag tag-m">napoleone</span><span class="tag tag-m">fede</span><span class="tag tag-m">gloria terrena</span></div>
+  </div>
+
+  <div class="card card-m">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Marzo 1821</div>
+        <div class="card-sub">Ode Patriottica</div>
+      </div>
+      <span class="badge badge-done">Già trattato</span>
+    </div>
+    <p class="block-text"><strong>Il tema:</strong> L'indipendenza italiana e la definizione di "nazione".</p>
+    <p class="block-text"><strong>Il concetto chiave:</strong> Manzoni non definisce l'Italia su basi geografiche (i confini del Po o delle Alpi), ma su basi <em>culturali, spirituali e storiche</em>. La famosa formula: <em>"Una d'arme, di lingua, d'altare, di memorie, di sangue e di cor"</em>. La nazione è una comunità di valori condivisi, non un territorio.</p>
+    <div class="tags"><span class="tag tag-m">patria</span><span class="tag tag-m">nazione</span><span class="tag tag-m">risorgimento</span></div>
+  </div>
+
+  <div class="card card-m">
+    <div class="card-header">
+      <div>
+        <div class="card-title">I Promessi Sposi — Capitolo 21</div>
+        <div class="card-sub">La Notte del Castello dell'Innominato</div>
+      </div>
+      <span class="badge badge-done">Già trattato</span>
+    </div>
+    <p class="block-text"><strong>La scena:</strong> Lucia, contadina analfabeta, è prigioniera del castello dell'Innominato, un potente signore feudale che ha commesso crimini atroci per tutta la vita. Ma la notte, l'Innominato non riesce a dormire: sente una voce interiore che lo tormenta.</p>
+    <p class="block-text"><strong>La conversione:</strong> Le parole di fede di Lucia – <em>"Dio perdona tante cose, per un'opera di misericordia!"</em> – colpiscono il cuore dell'Innominato. La debolezza indifesa di una contadina sconfigge la potenza militare di un signore feudale. Questo è il meccanismo della Provvidenza: i deboli possono convertire i potenti attraverso la fede.</p>
+    <div class="tags"><span class="tag tag-m">conversione</span><span class="tag tag-m">provvidenza</span><span class="tag tag-m">lucia</span></div>
   </div>
 </div>
 
+<!-- ===== LEOPARDI ===== -->
 <div id="leopardi" class="section">
-  <p class="section-title">Opere probabili di <em class="accent" style="color:var(--accent-l)">Leopardi</em></p>
+  <p class="section-title">Opere di Giacomo Leopardi</p>
+  <p class="section-subtitle">Per ogni opera: qual fase del pessimismo? Quale concetto filosofico emerge?</p>
 
   <div class="card card-l">
     <div class="card-header">
       <div>
-        <div class="card-title">L'infinito</div>
-        <div class="card-sub">1819 — Canti — idillio — 15 endecasillabi sciolti</div>
+        <div class="card-title">L'Infinito</div>
+        <div class="card-sub">Piccoli Idilli — Recanati, 1819</div>
       </div>
-      <span class="badge badge-hot">Classicissimo</span>
+      <span class="badge badge-hot">Fondamentale</span>
     </div>
-    <div class="row"><div class="row-label">Tema</div><div class="row-val">Il piacere dell'immaginazione: la siepe sul colle di Recanati blocca la vista ma scatena l'immaginazione di spazi e tempi illimitati. Il "naufragio" nell'infinito è dolce perché ci sottrae all'angoscia del finito.</div></div>
-    <div class="row"><div class="row-label">Metro</div><div class="row-val">15 endecasillabi sciolti (senza rima). Sintassi continua che imita il fluire del pensiero.</div></div>
-    <div class="row"><div class="row-label">Figure</div><div class="row-val">Enjambement continuo ("interminati / spazi"), opposizione finito/infinito, sinestesia ("sovrumani silenzi"), metafora del naufragio finale.</div></div>
-    <div class="row"><div class="row-label">Concetto</div><div class="row-val">Teoria del piacere: l'uomo cerca un piacere infinito che la realtà non può dare. Solo l'immaginazione lo avvicina. Pessimismo individuale (prima fase).</div></div>
-    <div class="row"><div class="row-label">Collega a</div><div class="row-val">A Silvia: elemento concreto (siepe/voce) → riflessione. La Ginestra: evoluzione dal pessimismo individuale a quello cosmico.</div></div>
-    <div class="tags">
-      <span class="tag tag-l">infinito</span><span class="tag tag-l">immaginazione</span><span class="tag tag-l">piacere</span><span class="tag tag-l">idillio</span>
+    <p class="block-text"><strong>Dove si svolge:</strong> Sul colle Tabor vicino a Recanati. Il poeta è seduto dietro a una <em>siepe</em>.</p>
+    <p class="block-text"><strong>Il meccanismo psicologico:</strong> La siepe <em>impedisce la vista</em> dell'orizzonte reale. Questo ostacolo fisico costringe il poeta ad attivare l'immaginazione. La mente, non potendo vedere, costruisce spazi interminabili, silenzi sovrumani e una quiete profonda. L'anima si perde in questo infinito immaginato e prova un piacere immenso: il <em>naufragio dolce</em>.</p>
+    <p class="block-text"><strong>Il collegamento con la filosofia:</strong> Questo funziona perché il piacere infinito (Teoria del Piacere) non può mai venire dalla realtà reale, ma solo dall'immaginazione. La siepe <em>blocca il reale</em> e lascia spazio all'infinito immaginato.</p>
+    <div class="row">
+      <div class="row-label">Metrica</div>
+      <div class="row-val">15 endecasillabi sciolti (senza rima). Ben 10 enjambement che dilatano lo spazio del verso, simulando acusticamente il senso dell'infinito.</div>
     </div>
+    <div class="tags"><span class="tag tag-l">siepe</span><span class="tag tag-l">immaginazione</span><span class="tag tag-l">naufragio dolce</span><span class="tag tag-l">pessimismo storico</span></div>
   </div>
 
   <div class="card card-l">
     <div class="card-header">
       <div>
-        <div class="card-title">Il sabato del villaggio</div>
-        <div class="card-sub">1829 — Canti</div>
+        <div class="card-title">Il Sabato del Villaggio</div>
+        <div class="card-sub">Grandi Idilli — Recanati, 1829</div>
       </div>
-      <span class="badge badge-hot">Molto prob.</span>
+      <span class="badge badge-hot">Nuovo</span>
     </div>
-    <div class="row"><div class="row-label">Tema</div><div class="row-val">L'attesa è più bella della realtà: il sabato (vigilia) è più gioioso della domenica stessa. Metafora della giovinezza come "sabato della vita" — il meglio viene prima, poi arriva la delusione.</div></div>
-    <div class="row"><div class="row-label">Metro</div><div class="row-val">Strofe di settenari ed endecasillabi. Tono descrittivo nelle prime strofe, poi esplicativo-filosofico nell'ultima.</div></div>
-    <div class="row"><div class="row-label">Figure</div><div class="row-val">Apostrofe al fanciullo (strofa finale), similitudine giovinezza/sabato, climax nella descrizione del villaggio.</div></div>
-    <div class="row"><div class="row-label">Struttura</div><div class="row-val"><strong>Parte 1:</strong> descrizione idillica del sabato sera. <strong>Parte 2:</strong> riflessione pessimistica sul significato dell'attesa.</div></div>
-    <div class="row"><div class="row-label">Collega a</div><div class="row-val">A Silvia: stessa struttura bipartita (descrizione → disillusione). Giovinezza come illusione destinata a svanire.</div></div>
-    <div class="tags">
-      <span class="tag tag-l">attesa</span><span class="tag tag-l">illusione</span><span class="tag tag-l">giovinezza</span><span class="tag tag-l">noia</span>
-    </div>
+    <p class="block-text"><strong>La scena:</strong> Un borgo di campagna si prepara con gioia alla domenica festiva. La giovane contadina torna dal campo con un mazzo di fiori, il vecchio siede sul sagrato, i bambini giocano.</p>
+    <p class="block-text"><strong>L'allegoria centrale:</strong> Il <em>sabato</em> non è solo il giorno della settimana: è l'<strong>allegoria della giovinezza</strong>, l'età dell'attesa, delle illusioni e della speranza in un futuro felice. La <em>domenica</em> invece rappresenta l'<strong>età adulta</strong>: quando arriva la tanto attesa festa, porta con sé noia, delusione e il crollo delle illusioni.</p>
+    <p class="block-text"><strong>Il messaggio al "fanciulletto":</strong> Leopardi, con ironia amara, consiglia al ragazzo di godersi l'attesa senza fretta di crescere. La giovinezza è la parte più bella della vita proprio perché è ancora ricca di speranza.</p>
+    <div class="tags"><span class="tag tag-l">giovinezza</span><span class="tag tag-l">illusione</span><span class="tag tag-l">sabato=attesa</span><span class="tag tag-l">domenica=delusione</span></div>
   </div>
 
   <div class="card card-l">
     <div class="card-header">
       <div>
-        <div class="card-title">Canto notturno di un pastore errante dell'Asia</div>
-        <div class="card-sub">1830 — Canti — pessimismo cosmico</div>
+        <div class="card-title">Canto Notturno di un Pastore Errante dell'Asia</div>
+        <div class="card-sub">Canti (N. 23) — Il Pessimismo Cosmico — 1830</div>
       </div>
-      <span class="badge badge-mid">Probabile</span>
+      <span class="badge badge-mid">Importante</span>
     </div>
-    <div class="row"><div class="row-label">Tema</div><div class="row-val">Un pastore interroga la luna sul senso della vita. La luna tace: la natura è indifferente. Il male non è individuale né storico, è cosmico e universale.</div></div>
-    <div class="row"><div class="row-label">Metro</div><div class="row-val">Strofe irregolari di endecasillabi e settenari. Tono meditativo e dialogico.</div></div>
-    <div class="row"><div class="row-label">Figure</div><div class="row-val">Apostrofe alla luna ("Che fai tu, luna, in ciel?"), anafora delle domande, parallelismo uomo/gregge, antitesi vita/noia.</div></div>
-    <div class="row"><div class="row-label">Concetto</div><div class="row-val">Pessimismo cosmico: la natura non è nemica attiva, è semplicemente indifferente. Il dolore è nella struttura stessa dell'existence.</div></div>
-    <div class="row"><div class="row-label">Collega a</div><div class="row-val">La Ginestra: entrambi affrontano l'indifferenza della natura. Il Canto notturno è più disperato; La Ginestra propone la "social catena".</div></div>
-    <div class="tags">
-      <span class="tag tag-l">natura indifferente</span><span class="tag tag-l">pessimismo cosmico</span><span class="tag tag-l">luna</span>
-    </div>
+    <p class="block-text"><strong>La situazione:</strong> Un pastore nomade dell'Asia centrale, di notte, contempla la Luna e le pone domande sull'esistenza, sul senso della vita, sulla differenza tra la vita umana e quella della Luna (che sembra immortale).</p>
+    <p class="block-text"><strong>La metafora del vecchio malato:</strong> Leopardi descrive la vita umana come il cammino di un <em>vecchio malato, scalzo e ferito</em> che corre sotto la tempesta e attraverso montagne per poi cadere in un abisso finale: la morte. La vita non è un viaggio verso qualcosa di bello, ma una fatica senza senso che termina nel nulla.</p>
+    <p class="block-text"><strong>La conclusione radicale:</strong> Per l'uomo, la vita è intrinsecamente male. Non c'è differenza tra le creature: tutte soffrono. <em>"Dimmi, luna: a che vale / al pastor la sua vita?"</em> – nessuna risposta arriva.</p>
+    <div class="tags"><span class="tag tag-l">pessimismo cosmico</span><span class="tag tag-l">vecchio malato</span><span class="tag tag-l">luna</span><span class="tag tag-l">pastore</span></div>
   </div>
 
   <div class="card card-l">
     <div class="card-header">
       <div>
-        <div class="card-title">La quiete dopo la tempesta</div>
-        <div class="card-sub">1829 — Canti — da studiare con Il sabato</div>
+        <div class="card-title">A Silvia</div>
+        <div class="card-sub">Grandi Idilli — Recanati, 1828</div>
       </div>
+      <span class="badge badge-done">Già trattato</span>
     </div>
-    <div class="row"><div class="row-label">Tema</div><div class="row-val">Il piacere è solo cessazione del dolore: la gioia dopo la tempesta non è vera felicità, è sollievo. La natura è "matrigna" perché genera dolore e offre solo brevi pause.</div></div>
-    <div class="row"><div class="row-label">Figure</div><div class="row-val">Enjambement, personificazione della natura, apostrofe ("O natura cortese"), ironia amara nel finale.</div></div>
-    <div class="row"><div class="row-label">Collega a</div><div class="row-val">Il sabato: stessa struttura descrizione → riflessione. La Ginestra: natura matrigna.</div></div>
-    <div class="tags">
-      <span class="tag tag-l">piacere</span><span class="tag tag-l">natura matrigna</span><span class="tag tag-l">dolore</span>
-    </div>
+    <p class="block-text"><strong>Chi è Silvia:</strong> Teresa Fattorini, figlia del cocchiere di casa Leopardi, morta giovane di tubercolosi. Leopardi la ricorda come simbolo di giovinezza e speranza.</p>
+    <p class="block-text"><strong>Il significato:</strong> La morte prematura di Silvia diventa allegoria universale del <em>crollo di tutte le speranze giovanili</em>. Non muore solo Silvia: muore la speranza stessa. La poesia si chiude con una terribile <strong>invettiva contro la Natura</strong>, colpevole di ingannare i propri figli promettendo felicità per poi abbandonarli al dolore e alla morte.</p>
+    <div class="tags"><span class="tag tag-l">speranza tradita</span><span class="tag tag-l">natura matrigna</span><span class="tag tag-l">giovinezza</span></div>
   </div>
 
-  <hr>
-  <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem">Evoluzione del pensiero leopardiano</p>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-label">Pessimismo individuale</div>
-      <div class="tl-desc">L'infinito, A Silvia — il male riguarda il singolo, le sue illusioni perdute.</div>
+  <div class="card card-l">
+    <div class="card-header">
+      <div>
+        <div class="card-title">La Ginestra (o il Fiore del Deserto)</div>
+        <div class="card-sub">Canti (N. 34) — Testamento Spirituale — 1836</div>
+      </div>
+      <span class="badge badge-done">Già trattato</span>
     </div>
-    <div class="tl-item">
-      <div class="tl-label">Pessimismo storico</div>
-      <div class="tl-desc">Le illusioni antiche proteggevano; la ragione moderna ha distrutto tutto.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-label">Pessimismo cosmico</div>
-      <div class="tl-desc">Canto notturno — il male è nella struttura stessa dell'universo. La natura è indifferente.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-label">Solidarietà umana</div>
-      <div class="tl-desc">La Ginestra — risposta: unirsi ai simili contro la natura nemica, senza illusioni ma senza resa.</div>
-    </div>
+    <p class="block-text"><strong>Lo scenario:</strong> Le pendici del Vesuvio, ricoperte di lava solidificata. Un deserto desolato dove cresce solo la ginestra (il fiore di ginepro), profumata e fiera. Questo paesaggio è la metafora dell'indifferenza della Natura verso l'uomo.</p>
+    <p class="block-text"><strong>La critica al suo secolo:</strong> Leopardi attacca il XIX secolo che definisce <em>"superbo e sciocco"</em> perché crede nel progresso e nelle illusioni ottimistiche. Il Vesuvio, che ha già distrutto Pompei, può tornare a distruggere tutto: questo è il vero volto della Natura.</p>
+    <p class="block-text"><strong>La Social Catena:</strong> La risposta di Leopardi non è la disperazione passiva, ma la <strong>solidarietà fraterna</strong>. Gli uomini devono smettere di combattersi tra loro (guerre, nazionalismi, egoismi) e unirsi in una "social catena" per resistere insieme all'unico vero nemico: la Natura indifferente.</p>
+    <p class="block-text"><strong>La ginestra come simbolo:</strong> Il fiore non si illude, non chiede pietà alla lava, ma accetta il suo destino con <em>dignità stoica</em>. È il modello di comportamento che Leopardi propone all'uomo: lucidità senza illusioni, resistenza dignitosa.</p>
+    <div class="tags"><span class="tag tag-l">social catena</span><span class="tag tag-l">vesuvio</span><span class="tag tag-l">solidarietà</span><span class="tag tag-l">dignità stoica</span></div>
   </div>
 </div>
 
+<!-- ===== METODO ===== -->
 <div id="metodo" class="section">
-  <p class="section-title">Metodo in <em class="accent" style="color:var(--accent-p)">5 passi</em> per l'analisi</p>
+  <p class="section-title">Metodo &amp; Figure Retoriche</p>
+  <p class="section-subtitle">Come analizzare un testo e rispondere all'esame.</p>
 
-  <div class="step">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <div class="step-title">Prima lettura rapida — 5 min</div>
-      <div class="step-body">Leggi tutto senza fermarti. Chiedi: di cosa parla? Qual è il tono emotivo? Riconosci l'autore dai temi e dallo stile?</div>
+  <div class="card card-p">
+    <div class="card-title" style="margin-bottom:1rem">I 3 Livelli di Analisi del Testo</div>
+    <div class="step">
+      <div class="step-num">A</div>
+      <div class="step-content">
+        <div class="step-title">Livello Fonico-Sintattico</div>
+        <div class="step-body">Fai la parafrasi: sciogli la sintassi complicata, individua soggetto e verbo anche se sono invertiti o separati. Questo dimostra che hai capito il testo letteralmente.</div>
+      </div>
     </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <div class="step-title">Parafrasi — 10–15 min</div>
-      <div class="step-body">Riformula ogni verso in prosa moderna. Non saltare i passaggi oscuri: scrivili con una tua interpretazione. La parafrasi vale punti e mostra che hai capito.</div>
+    <div class="step">
+      <div class="step-num">B</div>
+      <div class="step-content">
+        <div class="step-title">Livello Retorico-Formale</div>
+        <div class="step-body">Identifica le figure retoriche. Ma non basta nominarle: devi spiegare <strong>perché</strong> l'autore le ha usate. L'enjambement non è "una figura retorica" – è lo strumento con cui Leopardi imita acusticamente il senso dell'infinito.</div>
+      </div>
     </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <div class="step-title">Analisi formale — 10 min</div>
-      <div class="step-body">
-        <strong style="color:var(--text)">Metro:</strong> endecasillabi? settenari? rime? verso libero?<br>
-        <strong style="color:var(--text)">Figure retoriche:</strong> trovane almeno 4–5. Spiega l'effetto, non basta elencarle.<br>
-        <strong style="color:var(--text)">Sintassi:</strong> periodi lunghi o brevi? enjambement? iperbati?<br>
-        <strong style="color:var(--text)">Lessico:</strong> registri alti/bassi? termini chiave ripetuti?
+    <div class="step">
+      <div class="step-num">C</div>
+      <div class="step-content">
+        <div class="step-title">Livello Filosofico-Tematico</div>
+        <div class="step-body">Collega il brano al sistema di pensiero dell'autore. Un verso di Leopardi non è solo bello: è la manifestazione della Teoria del Piacere, del Pessimismo Cosmico, ecc. Questo è ciò che l'esaminatore vuole sentire.</div>
       </div>
     </div>
   </div>
 
-  <div class="step">
-    <div class="step-num">4</div>
-    <div class="step-content">
-      <div class="step-title">Analisi del contenuto — 10 min</div>
-      <div class="step-body">Tema principale e secondari · Struttura del testo (parti, movimenti, climax) · Io lirico o voce narrante · Messaggio finale dell'autore.</div>
+  <div class="figure-table">
+    <div class="figure-row">
+      <div class="figure-name">Enjambement</div>
+      <div class="figure-def">La frase non finisce con il verso ma continua nel verso successivo, creando una tensione ritmica. Leopardi lo usa per imitare il flusso del <em>vago e dell'infinito</em>, per far "sconfinare" il significato oltre i limiti formali del verso.</div>
     </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">5</div>
-    <div class="step-content">
-      <div class="step-title">Contestualizzazione e collegamenti — 10 min</div>
-      <div class="step-body">Colloca il testo nella produzione dell'autore (fase giovanile? matura?), nel contesto storico-culturale (Romanticismo, Illuminismo…), e fai almeno 1–2 collegamenti con altre opere.</div>
+    <div class="figure-row">
+      <div class="figure-name">Anastrofe</div>
+      <div class="figure-def">Inversione dell'ordine sintattico normale di due parole. Es. Leopardi: <em>"Sempre caro mi fu quest'ermo colle"</em> (= "questo ermo colle mi fu sempre caro"). Crea solennità e rilievo su certe parole.</div>
     </div>
-  </div>
-
-  <hr>
-  <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem">Figure retoriche — riconoscimento rapido</p>
-
-  <div class="figure-grid">
-    <div class="figure-row"><div class="figure-name">Anafora</div><div class="figure-def">Stessa parola/frase all'inizio di più versi — <em>es. "Dagli atri… dai Fori…"</em></div></div>
-    <div class="figure-row"><div class="figure-name">Enjambement</div><div class="figure-def">Il senso va oltre la fine del verso — <em>es. "interminati / spazi"</em></div></div>
-    <div class="figure-row"><div class="figure-name">Apostrofe</div><div class="figure-def">Ci si rivolge a qualcosa/qualcuno assente — <em>luna, natura, Silvia…</em></div></div>
-    <div class="figure-row"><div class="figure-name">Antitesi</div><div class="figure-def">Opposizione netta — <em>vita/morte, finito/infinito</em></div></div>
-    <div class="figure-row"><div class="figure-name">Metafora</div><div class="figure-def">Identificazione tra due cose — <em>"il naufragio è dolce"</em></div></div>
-    <div class="figure-row"><div class="figure-name">Similitudine</div><div class="figure-def">Paragone con "come/qual" — <em>"come la ginestra… così l'uomo"</em></div></div>
-    <div class="figure-row"><div class="figure-name">Personificazione</div><div class="figure-def">Vita a un'entità astratta — <em>la natura che "ride"</em></div></div>
-    <div class="figure-row"><div class="figure-name">Iperbato</div><div class="figure-def">Inversione dell'ordine normale delle parole — <em>tipico di Leopardi</em></div></div>
-    <div class="figure-row"><div class="figure-name">Climax</div><div class="figure-def">Crescita progressiva di intensità nel testo</div></div>
-    <div class="figure-row"><div class="figure-name">Sinestesia</div><div class="figure-def">Mescolanza di sensi diversi — <em>"sovrumani silenzi"</em></div></div>
+    <div class="figure-row">
+      <div class="figure-name">Antitesi</div>
+      <div class="figure-def">Accostamento di concetti o parole di significato opposto. Manzoni la usa spesso per evidenziare i contrasti morali tra oppressori e oppressi, tra gloria terrena e umiltà cristiana.</div>
+    </div>
+    <div class="figure-row">
+      <div class="figure-name">Allegoria</div>
+      <div class="figure-def">Un elemento concreto che rappresenta un concetto astratto. Es: la siepe de L'Infinito = il limite che innesca l'immaginazione; il sabato = la giovinezza; la domenica = l'età adulta.</div>
+    </div>
+    <div class="figure-row">
+      <div class="figure-name">Metafora</div>
+      <div class="figure-def">Sostituzione di una parola con un'altra per analogia, senza "come". Es: il "vecchio malato" del Canto Notturno = la metafora della vita umana.</div>
+    </div>
+    <div class="figure-row">
+      <div class="figure-name">Invettiva</div>
+      <div class="figure-def">Attacco diretto e violento contro qualcuno o qualcosa. Es: Leopardi in "A Silvia" attacca la Natura, responsabile di ingannare gli uomini. Nella Ginestra attacca il suo "secolo superbo e sciocco".</div>
+    </div>
   </div>
 </div>
 
-<div id="schede" class="section">
-  <p class="section-title">Schede rapide — <em class="accent" style="color:#a0c4e8">opere già fatte</em></p>
-
-  <div class="card card-m">
-    <div class="card-title">5 Maggio (Manzoni, 1821)</div>
-    <div class="row" style="margin-top:.6rem"><div class="row-label">Tema</div><div class="row-val">Morte di Napoleone: grandezza umana di fronte al divino. Solo la fede cristiana dà senso alla vita del grande.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Ode romantica, strofe di settenari, tono epico → lirico → religioso.</div></div>
-    <div class="tags"><span class="tag tag-m">storia</span><span class="tag tag-m">fede</span><span class="tag tag-m">Provvidenza</span></div>
-  </div>
-
-  <div class="card card-m">
-    <div class="card-title">Marzo 1821 (Manzoni)</div>
-    <div class="row" style="margin-top:.6rem"><div class="row-label">Tema</div><div class="row-val">Il Risorgimento e l'unità d'Italia come dovere morale. Fratellanza tra i popoli che combattono per la libertà.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Ode civile, tono patriottico e appassionato.</div></div>
-    <div class="tags"><span class="tag tag-m">Risorgimento</span><span class="tag tag-m">libertà</span><span class="tag tag-m">patria</span></div>
-  </div>
-
-  <div class="card card-m">
-    <div class="card-title">Coro atto III Adelchi (Manzoni)</div>
-    <div class="row" style="margin-top:.6rem"><div class="row-label">Tema</div><div class="row-val">Condizione del popolo italiano: né oppressori né liberi, solo "volgo disperso" senza storia propria.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Settenari, tono elegiaco e amareggiato.</div></div>
-    <div class="tags"><span class="tag tag-m">storia</span><span class="tag tag-m">vinti</span><span class="tag tag-m">popolo</span></div>
-  </div>
-
-  <div class="card card-m">
-    <div class="card-title">Cap. 21 Promessi Sposi (Manzoni)</div>
-    <div class="row" style="margin-top:.6rem"><div class="row-label">Tema</div><div class="row-val">Conversione dell'Innominato: il potere della fede e della grazia divina trasforma anche il più feroce degli uomini.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Narrazione psicologica profonda, dialogo realistico, intervento della Provvidenza.</div></div>
-    <div class="tags"><span class="tag tag-m">conversione</span><span class="tag tag-m">grazia</span><span class="tag tag-m">Provvidenza</span></div>
-  </div>
-
-  <hr>
-
-  <div class="card card-l">
-    <div class="card-title">A Silvia (Leopardi, 1828)</div>
-    <div class="row" style="margin-top:.6rem"><div class="row-label">Tema</div><div class="row-val">La morte precoce di Silvia = morte delle illusioni giovanili. La giovinezza come stagione delle speranze, poi distrutte dalla realtà.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Strofe di endecasillabi e settenari, apostrofe a Silvia, tono elegiaco.</div></div>
-    <div class="tags"><span class="tag tag-l">giovinezza</span><span class="tag tag-l">illusione</span><span class="tag tag-l">morte</span></div>
-  </div>
-
-  <div class="card card-l">
-    <div class="card-title">La Ginestra (Leopardi, 1836)</div>
-    <div class="row" style="margin-top:.6rem"><div class="row-label">Tema</div><div class="row-val">La ginestra come simbolo di resistenza dignitosa: l'uomo deve unirsi ai simili contro la natura nemica, senza illusioni ma senza resa.</div></div>
-    <div class="row"><div class="row-label">Stile</div><div class="row-val">Canzone leopardiana lunga, strofe irregolari, tono polemico e filosofico.</div></div>
-    <div class="tags"><span class="tag tag-l">solidarietà</span><span class="tag tag-l">natura nemica</span><span class="tag tag-l">resistenza</span></div>
-  </div>
-</div>
-
-
-<div id="autori" class="section">
-  <p class="section-title"><em class="accent" style="color:#d4a0c8">Autori &amp; Poetica</em> — visione del mondo</p>
-
-  <div class="author-hero">
-    <div class="author-card card-m">
-      <div class="author-name">Manzoni</div>
-      <div class="author-dates">1785 – 1873 · Milano</div>
-      <div class="author-kv"><strong>Corrente:</strong> Romanticismo cattolico</div>
-      <div class="author-kv"><strong>Opere chiave:</strong> I Promessi Sposi, Inni Sacri, tragedie storiche</div>
-      <div class="author-kv"><strong>Parola chiave:</strong> Provvidenza</div>
-      <div class="author-kv"><strong>Lingua:</strong> Fiorentino parlato colto</div>
-    </div>
-    <div class="author-card card-l">
-      <div class="author-name">Leopardi</div>
-      <div class="author-dates">1798 – 1837 · Recanati</div>
-      <div class="author-kv"><strong>Corrente:</strong> Romanticismo laico / proto-Decadentismo</div>
-      <div class="author-kv"><strong>Opere chiave:</strong> Canti, Operette morali, Zibaldone</div>
-      <div class="author-kv"><strong>Parola chiave:</strong> Noia / Infinito</div>
-      <div class="author-kv"><strong>Lingua:</strong> Classicismo lirico innovato</div>
-    </div>
-  </div>
-
-  <div class="versus-block">
-    <div class="versus-header">Confronto diretto — punto per punto</div>
-    <div class="versus-row">
-      <div class="versus-cell m">Dio è presente, guida la storia attraverso la Provvidenza divina</div>
-      <div class="versus-label">DIO</div>
-      <div class="versus-cell l">Assente o indifferente; la natura è matrigna e cieca</div>
-    </div>
-    <div class="versus-row">
-      <div class="versus-cell m">Il dolore educa e avvicina a Dio; ha un senso trascendente</div>
-      <div class="versus-label">MALE</div>
-      <div class="versus-cell l">Il dolore è strutturale all'universo, non ha giustificazione</div>
-    </div>
-    <div class="versus-row">
-      <div class="versus-cell m">Gli umili (Renzo, Lucia) sono i veri protagonisti della storia</div>
-      <div class="versus-label">POPOLO</div>
-      <div class="versus-cell l">L'uomo è vittima della natura; i giovani muoiono prima di vivere</div>
-    </div>
-    <div class="versus-row">
-      <div class="versus-cell m">La storia ha un senso: la Provvidenza opera anche nei momenti bui</div>
-      <div class="versus-label">STORIA</div>
-      <div class="versus-cell l">La storia è immobile; ogni civiltà illusa dalla ragione decade</div>
-    </div>
-    <div class="versus-row">
-      <div class="versus-cell m">La fede cristiana è ancora capace di trasformare l'uomo (Innominato)</div>
-      <div class="versus-label">FEDE</div>
-      <div class="versus-cell l">Nessuna fede; solo la solidarietà tra simili come risposta (Ginestra)</div>
-    </div>
-    <div class="versus-row">
-      <div class="versus-cell m">Prosa narrativa, tragedia storica, ode civile. Lingua unitaria.</div>
-      <div class="versus-label">FORMA</div>
-      <div class="versus-cell l">Lirica, canzone, Zibaldone-saggio. Musicalità del verso, vaghezza.</div>
-    </div>
-    <div class="versus-row">
-      <div class="versus-cell m">Realismo psicologico; figure morali (Renzo morale vs Renzo pulsionale)</div>
-      <div class="versus-label">UOMO</div>
-      <div class="versus-cell l">L'io lirico è specchio universale; le illusioni sono necessarie ma mortali</div>
-    </div>
-  </div>
-
-  <hr>
-  <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem">Poetica in dettaglio</p>
-
-  <div class="poetica-block pm">
-    <div class="poetica-title">Manzoni — poetica del "vero" e della Provvidenza</div>
-    <div class="poetica-item"><strong>Il vero come unico scopo:</strong> la letteratura deve rappresentare il reale così com'è, senza abbellimenti retorici. Il "vero" manzoniano non è però materialistico: è il reale illuminato dalla fede.</div>
-    <div class="poetica-item"><strong>Rifiuto delle unità aristoteliche:</strong> nel teatro, abbandona le tre unità classiche. La storia non obbedisce a schemi formali: la tragedia (Adelchi) nasce dalla complessità del reale.</div>
-    <div class="poetica-item"><strong>Storia e invenzione:</strong> nei Promessi Sposi il romanzo storico fonde documenti reali (la carestia, la peste) con personaggi inventati. La finzione serve a raccontare la verità storica degli umili, che non lasciano documenti.</div>
-    <div class="poetica-item"><strong>Lingua nazionale:</strong> dopo la prima edizione (1827), Manzoni riscrive il romanzo in fiorentino colto parlato — il "risciacquo in Arno". La questione della lingua è per lui questione civile e unitaria.</div>
-    <div class="poetica-item"><strong>Impegno civile:</strong> dal Risorgimento alla critica del potere, Manzoni crede che la letteratura abbia una funzione etica e politica. Il cristiano e il patriota sono inscindibili.</div>
-  </div>
-
-  <div class="poetica-block pl">
-    <div class="poetica-title">Leopardi — poetica del vago, dell'indefinito e dell'illusione</div>
-    <div class="poetica-item"><strong>Il "vago e indefinito":</strong> nello Zibaldone teorizza che le parole evocative (lontano, antico, sera, infinito) producono piacere perché l'immaginazione colma i vuoti con illusioni. La poesia deve essere suggestione, non definizione.</div>
-    <div class="poetica-item"><strong>Il pessimismo come metodo:</strong> dal pessimismo individuale (A Silvia) a quello storico (la ragione distrugge le illusioni) fino a quello cosmico (Canto notturno), Leopardi costruisce un sistema filosofico coerente — non un lamento, ma un'analisi.</div>
-    <div class="poetica-item"><strong>La teoria del piacere:</strong> l'uomo cerca un piacere infinito che la realtà non può dare. Ogni gioia è solo assenza temporanea di dolore (La quiete dopo la tempesta). Il desiderio è strutturalmente insoddisfacibile.</div>
-    <div class="poetica-item"><strong>Natura matrigna e solidarietà:</strong> nella Ginestra, ultima grande opera, arriva alla risposta: la natura è nemica cieca, ma gli uomini possono scegliere di unirsi contro di essa. Non consolazione, ma dignità laica.</div>
-    <div class="poetica-item"><strong>Classicismo e modernità:</strong> usa forme classiche (endecasillabi, canzoni) ma le svuota di contenuto ottimistico. È antico nella forma, modernissimo nel pensiero: molti lo considerano il primo poeta moderno italiano.</div>
-  </div>
-
-  <hr>
-  <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem">Come citarli in analisi — frasi-chiave pronte</p>
-
-  <div class="card card-m">
-    <div class="card-title" style="font-size:.875rem;margin-bottom:.6rem">Formule per contestualizzare Manzoni</div>
-    <div class="poetica-item" style="font-size:12px">"In questa lirica Manzoni esprime la sua visione provvidenziale della storia, secondo cui anche le vicende più dolorose trovano un senso nel disegno divino."</div>
-    <div class="poetica-item" style="font-size:12px">"Il testo si inserisce nella poetica manzoniana del 'vero': la rappresentazione del reale è al servizio di una verità etica e spirituale."</div>
-    <div class="poetica-item" style="font-size:12px">"Come nei Promessi Sposi, anche qui Manzoni dà voce agli umili, protagonisti silenziosi della storia."</div>
-  </div>
-
-  <div class="card card-l">
-    <div class="card-title" style="font-size:.875rem;margin-bottom:.6rem">Formule per contestualizzare Leopardi</div>
-    <div class="poetica-item" style="font-size:12px">"Il testo appartiene alla fase del pessimismo cosmico leopardiano, in cui il male non è più individuale ma strutturale all'universo."</div>
-    <div class="poetica-item" style="font-size:12px">"La poetica del vago e dell'indefinito si manifesta nella scelta lessicale: termini come 'lontano', 'antico', 'silenzio' evocano senza definire, lasciando spazio all'immaginazione."</div>
-    <div class="poetica-item" style="font-size:12px">"L'io lirico leopardiano non è autobiografico in senso stretto: rappresenta la condizione universale dell'uomo di fronte alla natura indifferente."</div>
-  </div>
-</div>
-
+<!-- ===== QUIZ ===== -->
 <div id="quiz" class="section">
-  <p class="section-title">Quiz <em class="accent" style="color:#80c8a0">di Verifica Completo</em></p>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:1.25rem">Scegli un argomento, il livello di difficoltà e avvia la simulazione per verificare all'istante la tua preparazione.</p>
+  <p class="section-title">Quiz a Scelta Multipla</p>
+  <p class="section-subtitle">Scegli una categoria e mettiti alla prova. Per ogni risposta sbagliata leggi la spiegazione.</p>
 
-  <div class="quiz-topic-grid">
-    <button class="quiz-topic-btn tm" data-topic="manzoni_poetica" onclick="selectTopic(this)">
-      <strong>Manzoni — Poetica</strong>Provvidenza, vero, lingua, romanzo storico
-    </button>
-    <button class="quiz-topic-btn tl" data-topic="leopardi_poetica" onclick="selectTopic(this)">
-      <strong>Leopardi — Poetica</strong>Pessimismo, vago, piacere, natura matrigna
-    </button>
-    <button class="quiz-topic-btn tm" data-topic="manzoni_testi" onclick="selectTopic(this)">
-      <strong>Manzoni — Testi</strong>Promessi Sposi, Odi, Adelchi
-    </button>
-    <button class="quiz-topic-btn tl" data-topic="leopardi_testi" onclick="selectTopic(this)">
-      <strong>Leopardi — Testi</strong>L'Infinito, A Silvia, La Ginestra, Canti
-    </button>
-    <button class="quiz-topic-btn tb" data-topic="confronto_ml" onclick="selectTopic(this)">
-      <strong>Confronto M vs L</strong>Storia, natura, uomo, forma
-    </button>
-    <button class="quiz-topic-btn tp" data-topic="figure_retoriche" onclick="selectTopic(this)">
-      <strong>Figure retoriche</strong>Riconoscimento e analisi formale
-    </button>
-    <button class="quiz-topic-btn tp" data-topic="romanticismo" onclick="selectTopic(this)">
-      <strong>Romanticismo italiano</strong>Caratteri, differenze, contesto
-    </button>
-    <button class="quiz-topic-btn tb" data-topic="metodo_analisi" onclick="selectTopic(this)">
-      <strong>Metodo analisi testo</strong>Parafrasi, figure, contenuto
-    </button>
+  <div class="quiz-setup">
+    <div class="quiz-setup-title">Categoria</div>
+    <div class="quiz-topic-grid">
+      <button class="quiz-topic-btn tm selected" onclick="selectTopic('manzoni',this)">
+        <strong>Manzoni</strong>Opere, Provvidenza, stile
+      </button>
+      <button class="quiz-topic-btn tl" onclick="selectTopic('leopardi',this)">
+        <strong>Leopardi</strong>Canti, idilli, pessimismo
+      </button>
+      <button class="quiz-topic-btn tp" onclick="selectTopic('metodo',this)">
+        <strong>Figure Retoriche</strong>Metodo e analisi
+      </button>
+      <button class="quiz-topic-btn ta" onclick="selectTopic('tutto',this)">
+        <strong>Tutto Insieme</strong>Miscellanea completa
+      </button>
+    </div>
   </div>
 
-  <div class="quiz-controls">
-    <button class="quiz-difficulty-btn active-diff" data-diff="base" onclick="selectDiff(this)">Base</button>
-    <button class="quiz-difficulty-btn" data-diff="intermedio" onclick="selectDiff(this)">Intermedio</button>
-    <button class="quiz-difficulty-btn" data-diff="avanzato" onclick="selectDiff(this)">Avanzato</button>
-  </div>
-
-  <button id="quiz-start-btn" onclick="startQuiz()" disabled>Scegli un argomento per iniziare</button>
-
-  <div class="quiz-area" id="quiz-area"></div>
+  <button id="quiz-start-btn" onclick="startQuiz()">▶ Avvia Quiz</button>
+  <div id="quiz-container"></div>
 </div>
 
 </main>
@@ -1201,204 +637,372 @@ function show(id, btn) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
+  btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
 
-/* ── DATABASE INTERNO QUIZ INTEGRATO ED IMMEDIATO ── */
-const quizDatabase = {
-  manzoni_poetica: {
-    base: [
-      { domanda: "Qual è il concetto cardine della visione della storia di Manzoni?", suggerimento: "Pensa alla guida divina", risposta: "Il concetto cardine è la Provvidenza divina. Manzoni crede che la storia non sia un susseguirsi caotico o insensato di eventi, bensì un disegno guidato da Dio che, sebbene spesso misterioso e doloroso per l'uomo, tende alla redenzione e al bene finale." },
-      { domanda: "Cosa intende Manzoni per il 'vero' come scopo della letteratura?", suggerimento: "Evita la pura finzione fantastica", risposta: "Per Manzoni la letteratura deve proporre il 'vero per oggetto'. Significa che l'opera letteraria deve fondarsi sulla realtà storica e morale, rifiutando le invenzioni mitologiche ed esornative del neoclassicismo, per assumere un alto valore educativo." }
-    ],
-    intermedio: [
-      { domanda: "Spiega la relazione tra 'vero storico' e 'vero poetico' nel romanzo manzoniano.", suggerimento: "Cosa fa lo storico e cosa fa il poeta?", risposta: "Il 'vero storico' riguarda i fatti documentati e realmente accaduti (come la peste o la carestia). Il 'vero poetico' interviene dove la storia ufficiale tace: il poeta inventa verosimilmente i pensieri, i sentimenti e le vicende quotidiane della gente comune (gli umili) rimasti esclusi dai grandi libri di storia." }
-    ],
-    avanzato: [
-      { domanda: "In che modo il rifiuto delle unità aristoteliche nel teatro manzoniano riflette la sua ideologia cristiana?", suggerimento: "Pensa alla complessità del reale e della morale", risposta: "Rifiutando le unità di tempo e luogo, Manzoni dichiara che la vita umana e la storia sono complesse e non possono essere costrette in gabbie formali astratte. La tragedia cristiana nasce proprio dal mostrare lo svolgersi reale delle passioni e delle prove morali nel tempo e nello spazio, evidenziando il contrasto tra l'egoismo umano e la giustizia divina." }
-    ]
-  },
-  leopardi_poetica: {
-    base: [
-      { domanda: "Che cos'è la 'teoria del piacere' nello Zibaldone?", suggerimento: "Pensa ai limiti del desiderio umano", risposta: "La teoria del piacere stabilisce che l'uomo tende per natura a un piacere infinito per estensione e durata. Poiché nessun oggetto reale può soddisfare questa brama infinita, l'essere umano è strutturalmente condannato all'insoddisfazione e alla noia." }
-    ],
-    intermedio: [
-      { domanda: "Come si evolve il concetto di Natura dal pessimismo storico al pessimismo cosmico?", suggerimento: "Da madre benigna a...", risposta: "Nel pessimismo storico, la Natura è vista come madre benigna che offre illusioni per nascondere l'infelicità agli uomini (mentre la ragione moderna distrugge tali schermi). Nel pessimismo cosmico, la Natura diventa una matrigna indifferente o crudele, un meccanismo cieco che genera creature solo per conservare il ciclo biologico, del tutto incurante della loro sofferenza." }
-    ],
-    avanzato: [
-      { domanda: "Quale funzione filosofica e sociale assume la solidarietà umana nella 'Ginestra'?", suggerimento: "La social catena", risposta: "La solidarietà (la 'social catena') rappresenta l'approdo etico estremo di Leopardi. Consapevoli che il vero nemico comune è la Natura matrigna, gli uomini devono abbandonare le guerre fratricide e l'orgoglio spirituale per stringersi in un patto di fratellanza laica, basato sulla verità del dolore comune e sul mutuo soccorso." }
-    ]
-  },
-  manzoni_testi: {
-    base: [
-      { domanda: "Quale grande evento storico fa da sfondo e motore alle vicende dei Promessi Sposi?", suggerimento: "Un flagello sanitario del '600", risposta: "L'evento storico principale è la terribile epidemia di peste del 1630 che colpisce Milano e il Nord Italia, affiancata dalla dominazione spagnola e dalla carestia generalizzata." }
-    ],
-    intermedio: [
-      { domanda: "Qual è il significato morale e strutturale del Coro dell'Atto IV dell'Adelchi ('Dagli atri muscosi...')?", suggerimento: "La sorte dei popoli italici", risposta: "Il coro descrive il popolo italiano antico che assiste alla caduta dei Longobardi sperando ingenuamente nella liberazione da parte dei Franchi. Il messaggio è che un popolo non può attendersi la libertà da un altro oppressore straniero; i vinti rimangono sottomessi se non sviluppano una propria coscienza nazionale." }
-    ],
-    avanzato: [
-      { domanda: "Analizza la funzione della conversione dell'Innominato nel capitolo 21 del romanzo.", suggerimento: "La crisi psicologica e la Grazia", risposta: "La conversione dell'Innominato non è un evento improvviso o magico, ma l'apice di una profonda crisi psicologica esistenziale. Strutturalmente dimostra la forza dirompente della Grazia divina che agisce attraverso le parole disarmate di Lucia, ribaltando i rapporti di forza terreni: il potente criminale si sottomette alla legge dell'amore di Dio." }
-    ]
-  },
-  leopardi_testi: {
-    base: [
-      { domanda: "Quale ostacolo visivo attiva il processo immaginativo nell'idillio 'L'infinito'?", suggerimento: "Cosa c'è sul colle?", risposta: "L'ostacolo visivo è la siepe posta sulla cima del colle Tabor a Recanati, che impedisce allo sguardo del poeta di scorgere l'orizzonte ultimo, costringendolo a immaginare spazi interminabili." }
-    ],
-    intermedio: [
-      { domanda: "In che modo la struttura del 'Sabato del villaggio' sostiene il messaggio filosofico dell'opera?", suggerimento: "La divisione in due parti", response: "Il testo è diviso simmetricamente: la prima parte descrive realisticamente l'animazione felice del paese che attende il giorno di festa; la seconda parte passa alla riflessione filosofica, spiegando che l'attesa del piacere (il sabato) è l'unico vero godimento concesso, poiché la domenica porterà solo tristezza e noia." }
-    ],
-    avanzato: [
-      { domanda: "Quale contrasto concettuale emerge tra la condizione del Pastore e quella del suo gregge nel 'Canto notturno'?", suggerimento: "La noia e l'autocoscienza", risposta: "Il contrasto si gioca sull'autocoscienza. Il gregge, privo di ragione e memoria storica della sofferenza, vive in un eterno presente libero dalla noia. Il pastore (l'uomo), dotato di intelletto, è invece tormentato dalle grandi domande esistenziali sul senso del patire e scopre che il dolore e la noia affliggono fatalmente ogni essere senziente." }
-    ]
-  },
-  confronto_ml: {
-    base: [
-      { domanda: "Qual è la differenza fondamentale tra Manzoni e Leopardi riguardo all'esistenza di Dio?", suggerimento: "Fede vs Laicità", risposta: "Manzoni possiede una salda fede nel Dio cristiano provvidenziale che redime e dà senso al dolore. Leopardi ha una visione totalmente laica, materialistica e atea dell'universo, in cui non c'è posto per un Dio d'amore o per una ricompensa ultraterrena." }
-    ],
-    intermedio: [
-      { domanda: "Confronta il concetto di 'Dolore' nei due autori.", suggerimento: "Fine educativo o puro fatto strutturale?", risposta: "Per Manzoni il dolore ha un valore provvidenziale ed educativo (la 'provvida sventura'); purifica l'anima e la avvicina a Dio. Per Leopardi il dolore è invece un dato strutturale, biologico e inevitabile dell'universo, privo di qualsiasi finalità o giustificazione trascendente." }
-    ],
-    avanzato: [
-      { domanda: "In che modo differisce la concezione del 'Popolo e degli Umili' tra le opere di Manzoni e l'idillio leopardiano?", suggerimento: "Protagonismo storico vs condizione universale", risposta: "In Manzoni il popolo e gli umili diventano per la prima volta i veri protagonisti attivi della storia e della narrazione, protetti dalla Provvidenza. In Leopardi, gli umili (come la donzelletta o il pastore dell'Asia) non sono scelti per scopi politici o storici, ma assurti a simboli universali della comune fragilità umana di fronte alle leggi indifferenti del cosmo." }
-    ]
-  },
-  figure_retoriche: {
-    base: [
-      { domanda: "Definisci l'enjambement e indica un celebre esempio leopardiano.", suggerimento: "Spezzatura del verso", risposta: "L'enjambement si verifica quando la fine sintattica di una frase non coincide con la fine metrica del verso, prolungandosi in quello successivo. Un celebre esempio si trova nell'Infinito: 'interminati / spazi' o 'sovrumani / silenzi'." }
-    ],
-    intermedio: [
-      { domanda: "Che cos'è una sinestesia e quale effetto produce l'espressione 'sovrumani silenzi'?", suggerimento: "Unione di sfere sensoriali diverse", risposta: "La sinestesia associa termini appartenenti a sfere sensoriali differenti. In 'sovrumani silenzi', Leopardi accosta l'udito (silenzio) a una percezione spaziale/intellettuale astratta (sovrumani), amplificando a dismisura il senso di vuoto e di assoluto percepito dall'intelletto." }
-    ],
-    avanzato: [
-      { domanda: "Quale funzione espressiva assume l'iperbato (o inversione sintattica) nello stile di Leopardi?", suggerimento: "Allontanamento dall'uso comune", risposta: "L'iperbato altera l'ordine comune delle parole nella frase frapponendo altri elementi. Leopardi lo utilizza per allontanare la lingua poetica dal registro quotidiano, creando un senso di indeterminatezza temporale e spaziale (la 'vaghezza') che rallenta la lettura e induce alla meditazione filosofica." }
-    ]
-  },
-  romanticismo: {
-    base: [
-      { domanda: "Qual è la principale caratteristica che distingue il Romanticismo italiano da quello europeo?", suggerimento: "Pensa alla concretezza e all'impegno", risposta: "Il Romanticismo italiano si distingue per il suo forte impegno civile, patriottico (legato al Risorgimento) e per il rifiuto degli eccessi fantastici, irrazionali o macabri tipici dei romantici nordeuropei, preferendo l'analisi della realtà storica e morale." }
-    ],
-    intermedio: [
-      { domanda: "Perché Manzoni può essere definito il capofila del 'Romanticismo cristiano'?", suggerimento: "Unione di morale cattolica ed estetica nuova", risposta: "Perché Manzoni unisce i temi dell'estetica romantica (il rifiuto dei modelli classici rigidi, l'attenzione per la storia reale e il popolo) con i dogmi e la morale del Cattolicesimo, vedendo nelle vicende storiche dei popoli e dei singoli la presenza costante e misteriosa di Dio." }
-    ],
-    avanzato: [
-      { domanda: "In che termini la figura filosofica di Leopardi si inserisce e al contempo supera il Romanticismo italiano?", suggerimento: "Classicismo formale e nichilismo moderno", risposta: "Leopardi si definisce polemicamente classicista nella forma e difensore della natura contro l'artificio della ragione. Tuttavia, supera ampiamente il moderato Romanticismo italiano per via del suo nichilismo radicale, della critica al progresso tecnologico e borghese, e per un'indagine esistenziale assoluta che anticipa le correnti decadenti ed esistenzialiste europee." }
-    ]
-  },
-  metodo_analisi: {
-    base: [
-      { domanda: "Quali sono i tre elementi formali macroscopici da individuare subito durante l'analisi metrica?", suggerimento: "La struttura del testo", risposta: "Occorre individuare il tipo di versi utilizzati (es. endecasillabi, settenari), la struttura delle strofe (es. quartine, strofe libere) e lo schema delle rime (es. baciata, alternata, versi sciolti)." }
-    ],
-    intermedio: [
-      { domanda: "Perché in un'analisi del testo non basta elencare le figure retoriche rinvenute?", suggerimento: "L'intenzione dell'autore", risposta: "Perché l'elenco puro e semplice è sterile. L'analisi richiede di spiegare il valore espressivo e funzionale della figura: bisogna chiarire perché l'autore l'abbia scelta e quale specifico effetto emotivo o logico produca nel lettore in quel punto del testo." }
-    ],
-    avanzato: [
-      { domanda: "Come deve essere strutturato l'ultimo passo dell'analisi, ovvero la 'contestualizzazione culturale'?", suggerimento: "Dai cerchi più stretti a quelli più ampi", risposta: "La contestualizzazione deve procedere per cerchi concentrici: prima inserendo il testo nella produzione specifica dell'autore (es. fase giovanile vs matura); poi collegandolo ai movimenti artistico-letterari coevi (es. il dibattito tra Classici e Romantici); e infine relazionandolo agli eventi storici e sociali dell'epoca (es. i moti risorgimentali o la dominazione straniera)." }
-    ]
-  }
+// ========== DATI QUIZ ==========
+const allQuestions = {
+  manzoni: [
+    {
+      q: "Che cosa significa il termine 'Provvida Sventura' nel Coro dell'Atto IV dell'Adelchi?",
+      options: [
+        "Una sventura che capita in modo casuale e imprevedibile",
+        "Il dolore di Ermengarda è un dono di Dio che la purifica e la conduce alla salvezza eterna",
+        "La sfortuna dei Longobardi durante la battaglia contro i Franchi",
+        "La tristezza di Manzoni per le sconfitte della storia italiana"
+      ],
+      correct: 1,
+      explanation: "La 'Provvida Sventura' è il nucleo teologico del Coro. Ermengarda è una Longobarda (popolo oppressore). Il suo dolore per il ripudio di Carlo Magno diventa paradossalmente un dono provvidenziale: la purifica dalle colpe storiche del suo popolo e la salva. La sventura è 'provvida' = utile, voluta da Dio per un fine superiore."
+    },
+    {
+      q: "Secondo la Lettera a Cesare D'Azeglio, quali sono i tre principi della poetica manzoniana?",
+      options: [
+        "Il bello, il sublime e l'armonioso",
+        "La fantasia, l'emozione e la musicalità",
+        "Il vero per oggetto, l'utile per iscopo, l'interessante per mezzo",
+        "La storia, la politica e la religione"
+      ],
+      correct: 2,
+      explanation: "Nella Lettera a Cesare D'Azeglio (1823), Manzoni espone la sua poetica romantica: 1) Il VERO per oggetto = la letteratura deve trattare la storia reale, non il fantastico. 2) L'UTILE per iscopo = deve avere una funzione educativa e morale. 3) L'INTERESSANTE per mezzo = deve usare una lingua accessibile e argomenti moderni."
+    },
+    {
+      q: "Nella Pentecoste, quale trasformazione storica porta la discesa dello Spirito Santo?",
+      options: [
+        "La nascita della monarchia cristiana in Europa",
+        "La distruzione di tutte le differenze di lingua e cultura",
+        "Una nuova democrazia dello spirito che rende lo schiavo uguale al padrone davanti a Dio",
+        "L'unificazione politica dell'Italia sotto il papato"
+      ],
+      correct: 2,
+      explanation: "Nella Pentecoste, Manzoni trasforma un evento religioso in una rivoluzione sociale: lo Spirito Santo abbatte ogni barriera di classe, razza e condizione. Il messaggio è che davanti a Dio lo schiavo è uguale al padrone. La religione cristiana diventa così una forza rivoluzionaria che fonda l'uguaglianza morale tra tutti gli esseri umani."
+    },
+    {
+      q: "Cosa condanna Manzoni nel Coro dell'Atto III dell'Adelchi riguardo ai Latini?",
+      options: [
+        "La loro crudeltà verso i Longobardi sconfitti",
+        "La loro passività politica: aspettano di essere liberati dai Franchi senza combattere per se stessi",
+        "Il loro rifiuto di convertirsi al cristianesimo",
+        "La loro incapacità di organizzare un esercito"
+      ],
+      correct: 1,
+      explanation: "I Latini si illudono che i Franchi di Carlo Magno siano venuti a liberarli. Manzoni interviene con un ammonimento: i Franchi combattono solo per i propri scopi. I Latini cambieranno solo padrone. La condanna è per la passività politica: la libertà non si riceve passivamente, un popolo deve conquistarla da solo."
+    },
+    {
+      q: "Come definisce Manzoni l'identità italiana nell'ode Marzo 1821?",
+      options: [
+        "Come un territorio geografico delimitato dal Po e dalle Alpi",
+        "Come una comunità di lingua, storia, fede, sangue e memoria condivisa",
+        "Come un insieme di città-stato indipendenti accomunate dal commercio",
+        "Come la discendenza diretta dall'Impero Romano"
+      ],
+      correct: 1,
+      explanation: "In Marzo 1821, Manzoni nega che l'Italia sia definita da confini geografici. La definisce attraverso la formula 'Una d'arme, di lingua, d'altare, di memorie, di sangue e di cor'. La nazione è una comunità spirituale e culturale, non un territorio. Questa è una visione romantica dell'identità nazionale."
+    },
+    {
+      q: "Nei Promessi Sposi, come si manifesta la Provvidenza nella scena del castello dell'Innominato?",
+      options: [
+        "Un miracolo soprannaturale trasforma l'Innominato istantaneamente",
+        "Il cardinale Borromeo arriva di persona a convincere l'Innominato",
+        "Le semplici parole di fede di Lucia, una contadina indifesa, riescono a convertire un potente signore feudale",
+        "Una violenta tempesta notturna spaventa l'Innominato e lo convince a cambiare vita"
+      ],
+      correct: 2,
+      explanation: "La conversione dell'Innominato dimostra come opera la Provvidenza manzoniana: la debolezza indifesa di Lucia (contadina analfabeta) sconfigge la potenza militare di un signore spietato attraverso le sue parole di fede. Questo inverte la logica del mondo: i deboli e umili possono cambiare i potenti. È il cuore della visione manzoniana."
+    },
+    {
+      q: "Come differisce la Provvidenza nell'Adelchi rispetto ai Promessi Sposi?",
+      options: [
+        "Nell'Adelchi la Provvidenza non esiste, mentre nei Promessi Sposi è centrale",
+        "Nell'Adelchi la Provvidenza è tragica (i giusti si salvano solo morendo), nei Promessi Sposi opera anche nel mondo terreno portando a una quiete finale",
+        "Nei Promessi Sposi la Provvidenza punisce i malvagi, nell'Adelchi li premia",
+        "Nell'Adelchi la Provvidenza è collettiva, nei Promessi Sposi è individuale"
+      ],
+      correct: 1,
+      explanation: "Differenza fondamentale: nell'Adelchi (tragedia), la Provvidenza è trascendente e tragica – i giusti come Adelchi ed Ermengarda non trovano pace sulla terra, possono salvarsi solo uscendo dalla storia (morendo). Nei Promessi Sposi, invece, la Provvidenza opera anche nel mondo terreno: Renzo e Lucia si ritrovano, il male viene punito, la storia ha un finale di relativa giustizia."
+    },
+    {
+      q: "Nel Cinque Maggio, qual è il messaggio centrale di Manzoni riguardo a Napoleone?",
+      options: [
+        "Napoleone è condannato per aver fatto troppa guerra",
+        "La gloria militare è l'unico valore che conta nella storia",
+        "Nella disperazione dell'esilio, la Fede redime Napoleone mostrando che la gloria terrena è nulla di fronte all'eternità",
+        "Napoleone non si converte mai alla fede e muore disperato"
+      ],
+      correct: 2,
+      explanation: "Nel Cinque Maggio, Manzoni usa la figura di Napoleone per illustrare la sua visione provvidenziale: anche il più grande conquistatore della storia, nella solitudine dell'esilio a Sant'Elena, trova la pace solo attraverso la Fede. La gloria terrena è fugace e vana. Dio scende a consolarlo nel momento del fallimento umano più totale."
+    }
+  ],
+  leopardi: [
+    {
+      q: "Nell'Infinito, perché la siepe è un elemento fondamentale della poesia?",
+      options: [
+        "È un simbolo della prigionia della vita a Recanati",
+        "Impedendo la vista dell'orizzonte reale, costringe l'immaginazione a costruire spazi infiniti",
+        "Separa il mondo dei vivi dal regno dei morti",
+        "È un regalo che Silvia ha fatto al poeta"
+      ],
+      correct: 1,
+      explanation: "La siepe è il meccanismo psicologico centrale della poesia. Bloccando la vista reale, obbliga la mente ad attivare l'immaginazione. Non potendo vedere, la mente costruisce spazi interminabili, silenzi sovrumani. L'immaginazione produce il piacere infinito che la realtà non può mai dare (Teoria del Piacere). La siepe trasforma un limite fisico in una porta verso l'infinito."
+    },
+    {
+      q: "Cosa simboleggia il sabato nel 'Sabato del Villaggio'?",
+      options: [
+        "Il giorno di riposo e di ozio che Leopardi amava",
+        "La vecchiaia serena dopo una vita di lavoro",
+        "La giovinezza, l'età dell'attesa e delle illusioni in cui si spera in un futuro felice",
+        "Il momento della morte, atteso inevitabilmente da tutti"
+      ],
+      correct: 2,
+      explanation: "Il Sabato del Villaggio è una poesia allegorica. Il sabato = la giovinezza (si aspetta con gioia la domenica/il futuro). La domenica = l'età adulta (quando arriva la festa attesa, porta noia e delusione). Leopardi avvisa il 'fanciulletto': goditi l'attesa, non affrettarti a crescere. La giovinezza è la parte migliore della vita proprio perché è ancora piena di speranza."
+    },
+    {
+      q: "Qual è la differenza fondamentale tra Pessimismo Storico e Pessimismo Cosmico?",
+      options: [
+        "Il Pessimismo Storico riguarda solo l'Italia, quello Cosmico il mondo intero",
+        "Nel Pessimismo Storico la colpa è della civiltà moderna; nel Cosmico la sofferenza è una condanna biologica della Natura stessa",
+        "Il Pessimismo Storico è di Manzoni, quello Cosmico è di Leopardi",
+        "Nel Pessimismo Storico si può guarire, in quello Cosmico no"
+      ],
+      correct: 1,
+      explanation: "DIFFERENZA CHIAVE: Nel Pessimismo Storico (1819-1823), la Natura era madre benigna; colpa della civiltà moderna che ha distrutto le illusioni. Gli antichi erano più felici. Nel Pessimismo Cosmico (dal 1824), la Natura è sempre stata matrigna indifferente: non ha mai protetto l'uomo. La sofferenza è universale e ontologica (= nella natura stessa dell'essere), non storica. Non c'è rimedio."
+    },
+    {
+      q: "Nel Canto Notturno, qual è il significato della metafora del 'vecchio malato'?",
+      options: [
+        "Rappresenta Leopardi stesso, malato fin da giovane a causa della sua scoliosi",
+        "È la metafora della vita umana: un cammino faticoso e doloroso che termina con la morte",
+        "Simboleggia la civiltà europea stanca e in decadenza",
+        "Rappresenta il pastore anziano che dialoga con la luna"
+      ],
+      correct: 1,
+      explanation: "Nel Canto Notturno, Leopardi descrive la vita come il cammino di un vecchio malato, scalzo e ferito, che corre sotto la tempesta e attraverso montagne per poi cadere in un abisso finale: la morte. Non è un viaggio verso qualcosa di bello. È la fatica senza senso dell'esistenza. È una delle immagini più pessimistiche di tutto il Pessimismo Cosmico."
+    },
+    {
+      q: "Cosa rappresenta la 'Social Catena' nella Ginestra?",
+      options: [
+        "La catena fisica con cui i potenti tengono schiavi i deboli",
+        "La proposta di Leopardi: gli uomini devono unirsi solidalmente contro la Natura nemica, smettendo di combattersi tra loro",
+        "Il legame che unisce la ginestra alle rocce del Vesuvio",
+        "Una critica al socialismo utopico del suo tempo"
+      ],
+      correct: 1,
+      explanation: "La Social Catena è la proposta etica finale di Leopardi. Preso atto che la Natura è una matrigna indifferente e spietata (il Vesuvio che ha distrutto Pompei), gli uomini non devono illudersi né combattersi tra loro. Devono invece unirsi in una solidarietà fraterna ('social catena') per resistere insieme all'unico vero nemico: la Natura. È un pessimismo attivo, non rassegnato."
+    },
+    {
+      q: "In 'A Silvia', chi è davvero Silvia e cosa rappresenta nella poesia?",
+      options: [
+        "È la sorella di Leopardi, morta per una malattia",
+        "È Teresa Fattorini, morta giovane, che diventa allegoria universale del crollo di tutte le speranze giovanili",
+        "È un personaggio completamente inventato senza riferimenti reali",
+        "È una fanciulla del paese che Leopardi amava in segreto"
+      ],
+      correct: 1,
+      explanation: "Silvia è ispirata a Teresa Fattorini, figlia del cocchiere di casa Leopardi, morta di tubercolosi. Leopardi non la conosceva bene personalmente: la trasforma in un simbolo. La sua morte prematura diventa l'allegoria del crollo di tutte le speranze giovanili. Non muore solo Silvia: muore la speranza stessa. La poesia finisce con un'invettiva contro la Natura ingannatrice."
+    },
+    {
+      q: "Nella Ginestra, come viene usata la figura del Vesuvio?",
+      options: [
+        "Come simbolo della potenza creatrice della Natura",
+        "Come metafora del genio poetico di Leopardi",
+        "Come prova concreta dell'indifferenza e della forza distruttrice della Natura verso l'uomo",
+        "Come simbolo della rivoluzione politica italiana"
+      ],
+      correct: 2,
+      explanation: "Il Vesuvio nella Ginestra è la prova empirica della tesi di Leopardi: ha già distrutto Pompei ed Ercolano, può tornare a distruggere tutto. Non lo fa per punire: lo fa perché è indifferente alla vita umana. È il volto reale della Natura, quello che il '800 'superbo e sciocco' si rifiuta di vedere preferendo le illusioni del progresso. Il Vesuvio distrugge i sogni ottimistici."
+    },
+    {
+      q: "Qual è la funzione degli enjambement nell'Infinito di Leopardi?",
+      options: [
+        "Rendono la poesia più difficile da leggere come segno di raffinatezza",
+        "Rispettano le regole metriche tradizionali della poesia classica",
+        "Dilatano lo spazio del verso, imitando acusticamente e visivamente il senso dell'infinito",
+        "Servono solo a completare la rima baciata alla fine del verso"
+      ],
+      correct: 2,
+      explanation: "L'Infinito ha 15 endecasillabi sciolti (senza rima) e ben 10 enjambement. Leopardi usa l'enjambement non per caso: rompendo l'unità del verso e continuando nel verso successivo, la frase 'straborda', 'sconfina'. Questo imita acusticamente il senso stesso dell'infinito, la percezione di qualcosa che va oltre ogni limite. Forma e contenuto coincidono perfettamente."
+    }
+  ],
+  metodo: [
+    {
+      q: "Cos'è l'anastrofe e quale effetto produce?",
+      options: [
+        "L'uso di parole inventate per creare suoni nuovi",
+        "La ripetizione ossessiva della stessa parola per enfasi",
+        "L'inversione dell'ordine sintattico normale, che crea solennità e rilievo su certe parole",
+        "L'accostamento di due immagini opposte nello stesso verso"
+      ],
+      correct: 2,
+      explanation: "L'anastrofe è l'inversione dell'ordine sintattico abituale. Esempio classico da Leopardi: 'Sempre caro mi fu quest'ermo colle' invece di 'Quest'ermo colle mi fu sempre caro'. Mettendo 'Sempre' all'inizio del verso, Leopardi gli dà un rilievo speciale, una solennità meditativa. L'anastrofe è una scelta deliberata per dare peso a certe parole."
+    },
+    {
+      q: "Qual è la differenza tra enjambement e anastrofe?",
+      options: [
+        "L'enjambement è di Leopardi, l'anastrofe è di Manzoni",
+        "L'enjambement riguarda la continuazione della frase oltre il verso; l'anastrofe riguarda l'inversione dell'ordine delle parole nella frase",
+        "Sono la stessa cosa, solo con nomi diversi",
+        "L'enjambement riguarda le rime, l'anastrofe le metafore"
+      ],
+      correct: 1,
+      explanation: "Sono figure molto diverse: ENJAMBEMENT = la frase non si conclude con la fine del verso ma continua in quello successivo (effetto: tensione, dilatazione). ANASTROFE = l'ordine sintattico normale di due o più parole viene invertito (effetto: solennità, rilievo). Uno riguarda come la frase attraversa i versi; l'altra riguarda l'ordine delle parole dentro la frase."
+    },
+    {
+      q: "Cosa deve fare un buon analisi retorica quando identifica una figura?",
+      options: [
+        "Basta nominarla correttamente con il termine tecnico",
+        "Nominarla e spiegare perché l'autore l'ha usata in quel preciso punto del testo",
+        "Contare quante volte appare nel testo",
+        "Spiegare come si chiama in greco antico"
+      ],
+      correct: 1,
+      explanation: "Il livello B dell'analisi retorica non si ferma all'identificazione. Non basta dire 'qui c'è un enjambement'. Devi spiegare la FUNZIONE: perché Leopardi usa l'enjambement qui? Per imitare il flusso dell'infinito, per dilatare lo spazio, per far sconfinare il significato oltre il limite del verso. L'analisi senza la funzione è meccanica e non valorizzata all'esame."
+    },
+    {
+      q: "L'antitesi viene usata da Manzoni per quale scopo principale?",
+      options: [
+        "Per creare effetti musicali nelle sue poesie",
+        "Per evidenziare i contrasti morali tra oppressori e oppressi, tra gloria terrena e umiltà cristiana",
+        "Per descrivere i paesaggi naturali della Lombardia",
+        "Per imitare lo stile dei poeti latini classici"
+      ],
+      correct: 1,
+      explanation: "Manzoni usa l'antitesi (accostamento di opposti) per mettere in rilievo le contraddizioni morali e storiche che stanno al centro della sua visione del mondo: potenti vs deboli, oppressori vs oppressi, gloria terrena vs umiltà cristiana, la violenza della storia vs la Provvidenza divina. L'antitesi non è solo un ornamento: è uno strumento del suo pensiero."
+    },
+    {
+      q: "Cos'è un'allegoria e quale esempio troviamo nel Sabato del Villaggio?",
+      options: [
+        "Un'invettiva violenta contro qualcosa; nel Sabato attacca il lunedì",
+        "Una figura musicale; nel Sabato le campane sono la melodia principale",
+        "Un elemento concreto che rappresenta un'idea astratta; il sabato = giovinezza, la domenica = età adulta con le sue delusioni",
+        "Un dialogo tra personaggi; nel Sabato è il dialogo tra il vecchio e la giovane"
+      ],
+      correct: 2,
+      explanation: "L'allegoria usa un elemento concreto e reale per veicolare un significato astratto e simbolico. Nel Sabato del Villaggio: sabato (giorno concreto) = giovinezza (concetto astratto); domenica (giorno concreto) = età adulta con il crollo delle illusioni (concetto astratto). Il borgo del sabato è concreto e vivace, ma il vero soggetto è l'intera parabola dell'esistenza umana."
+    },
+    {
+      q: "Cosa sono gli 'endecasillabi sciolti' usati da Leopardi nell'Infinito?",
+      options: [
+        "Versi di 11 sillabe senza rima, che danno libertà ritmica e un tono discorsivo e meditativo",
+        "Versi di 10 sillabe con rima baciata AA BB",
+        "Versi senza numero fisso di sillabe, completamente liberi",
+        "Una forma metrica inventata da Leopardi per questa poesia"
+      ],
+      correct: 0,
+      explanation: "Gli endecasillabi sciolti sono versi di 11 sillabe ma senza schema di rime. 'Sciolti' = liberi dalla rima. Leopardi sceglie questa forma per l'Infinito perché la rima avrebbe creato chiusure, limiti, conclusioni. Senza rima, la poesia può fluire liberamente, proprio come l'infinito che descrive. La forma metrica rinforza il significato della poesia."
+    }
+  ]
 };
 
-let selectedTopic = null;
-let selectedDiff = 'base';
-let currentQuestions = [];
-let currentQ = 0;
-let score = 0;
-let answered = false;
-
-function selectTopic(btn) {
-  document.querySelectorAll('.quiz-topic-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  selectedTopic = btn.dataset.topic;
-  const startBtn = document.getElementById('quiz-start-btn');
-  startBtn.disabled = false;
-  startBtn.textContent = '▶ Inizia il quiz su: ' + btn.querySelector('strong').textContent;
+// Mischia il tutto per la categoria "tutto"
+function buildAll() {
+  const arr = [];
+  Object.values(allQuestions).forEach(cat => cat.forEach(q => arr.push(q)));
+  return shuffle(arr);
 }
 
-function selectDiff(btn) {
-  document.querySelectorAll('.quiz-difficulty-btn').forEach(b => b.classList.remove('active-diff'));
-  btn.classList.add('active-diff');
-  selectedDiff = btn.dataset.diff;
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let currentTopic = 'manzoni';
+let questions = [];
+let qIndex = 0;
+let score = 0;
+
+function selectTopic(t, btn) {
+  currentTopic = t;
+  document.querySelectorAll('.quiz-topic-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
 }
 
 function startQuiz() {
-  if (!selectedTopic) return;
-  currentQ = 0;
+  if (currentTopic === 'tutto') {
+    questions = buildAll();
+  } else {
+    questions = shuffle(allQuestions[currentTopic] || []);
+  }
+  qIndex = 0;
   score = 0;
-  answered = false;
-
-  const area = document.getElementById('quiz-area');
-  area.innerHTML = `<div class="quiz-loading"><div class="spin"></div><div>Generazione domande in corso…</div></div>`;
-
-  // Simulazione leggero ritardo per feedback grafico ottimale
-  setTimeout(() => {
-    const dbQuestions = quizDatabase[selectedTopic][selectedDiff];
-    
-    // Fallback di sicurezza se mancano domande specifiche in un livello
-    currentQuestions = dbQuestions && dbQuestions.length > 0 ? dbQuestions : quizDatabase[selectedTopic]['base'];
-    
-    renderQuestion();
-  }, 400);
+  renderQ();
 }
 
-function renderQuestion() {
-  if (currentQ >= currentQuestions.length) {
-    renderScore();
-    return;
-  }
-  answered = false;
-  const q = currentQuestions[currentQ];
-  const area = document.getElementById('quiz-area');
-  area.innerHTML = `
+function renderQ() {
+  if (qIndex >= questions.length) { renderScore(); return; }
+  const q = questions[qIndex];
+  const topicLabels = { manzoni: 'Manzoni', leopardi: 'Leopardi', metodo: 'Retorica' };
+  const topicLabel = topicLabels[currentTopic] || '';
+  const pct = Math.round((qIndex / questions.length) * 100);
+  const letters = ['A', 'B', 'C', 'D'];
+
+  const optionsHtml = q.options.map((opt, i) => `
+    <button class="quiz-option" onclick="selectAnswer(${i})">
+      <span class="opt-letter">${letters[i]}</span>
+      <span>${opt}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('quiz-container').innerHTML = `
     <div class="quiz-card">
-      <div class="quiz-q-num">Domanda ${currentQ + 1} di ${currentQuestions.length}</div>
-      <div class="quiz-question">${q.domanda}</div>
-      <div class="quiz-hint" id="hint-box">${q.suggerimento}</div>
-      <div class="quiz-answer-box" id="answer-box">
-        <div class="quiz-answer-label">Risposta modello per l'esame</div>
-        ${q.risposta}
+      <div style="display:flex;align-items:center;margin-bottom:.25rem">
+        <span class="quiz-q-num">Domanda ${qIndex + 1} di ${questions.length}</span>
+        ${currentTopic === 'tutto' ? '' : ''}
       </div>
-      <div class="quiz-btn-row">
-        <button class="quiz-btn" onclick="showHint()">💡 Suggerimento</button>
-        <button class="quiz-btn primary" onclick="showAnswer()">Mostra risposta</button>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-options" id="options-container">${optionsHtml}</div>
+      <div class="quiz-explanation" id="expl-box">
+        <div class="quiz-explanation-label">Spiegazione</div>
+        <p>${q.explanation}</p>
       </div>
-    </div>
-    <div id="self-eval" style="display:none;" class="quiz-card" style="animation:fadeIn .3s ease">
-      <div class="quiz-q-num">Valutazione onesta del tuo ripasso:</div>
-      <div class="quiz-btn-row">
-        <button class="quiz-btn" onclick="nextQ(0)" style="border-color:rgba(224,112,112,0.3);color:#f08080">✗ Non sapevo</button>
-        <button class="quiz-btn" onclick="nextQ(0.5)" style="border-color:rgba(201,168,108,0.3);color:var(--accent-m)">◑ In parte</button>
-        <button class="quiz-btn primary" onclick="nextQ(1)">✓ Sapevo bene</button>
-      </div>
+      <button class="quiz-next-btn" id="next-btn" onclick="nextQ()">Prossima domanda →</button>
     </div>`;
 }
 
-function showHint() {
-  document.getElementById('hint-box').classList.add('visible');
+function selectAnswer(idx) {
+  const q = questions[qIndex];
+  const opts = document.querySelectorAll('.quiz-option');
+  opts.forEach((btn, i) => {
+    btn.classList.add('disabled');
+    if (i === q.correct) btn.classList.add('correct');
+    else if (i === idx && i !== q.correct) btn.classList.add('wrong');
+  });
+  if (idx === q.correct) score++;
+  document.getElementById('expl-box').classList.add('visible');
+  const nb = document.getElementById('next-btn');
+  nb.classList.add('visible');
+  if (qIndex === questions.length - 1) nb.textContent = 'Vedi il risultato →';
 }
 
-function showAnswer() {
-  if (answered) return;
-  answered = true;
-  document.getElementById('answer-box').classList.add('visible');
-  document.getElementById('self-eval').style.display = 'block';
-}
-
-function nextQ(pts) {
-  score += pts;
-  currentQ++;
-  renderQuestion();
+function nextQ() {
+  qIndex++;
+  renderQ();
 }
 
 function renderScore() {
-  const pct = Math.round((score / currentQuestions.length) * 100);
-  const msg = pct >= 80 ? 'Ottimo lavoro! La tua preparazione è solida.' : pct >= 50 ? 'Buono, ma ti consiglio di ripassare le schede dei punti deboli.' : 'Ripassa più a fondo la teoria prima dell\'esame.';
-  const area = document.getElementById('quiz-area');
-  area.innerHTML = `
+  const pct = Math.round((score / questions.length) * 100);
+  let msg, color;
+  if (pct >= 80) {
+    msg = '🎉 Ottimo! Hai una buona padronanza della materia. Rileggi solo i punti dove hai esitato.';
+    color = 'var(--green)';
+  } else if (pct >= 50) {
+    msg = '📚 Base discreta. Torna sui tab delle sezioni dove hai sbagliato e rileggi bene quei concetti, poi rifai il quiz.';
+    color = 'var(--accent-m)';
+  } else {
+    msg = '⚠️ Devi ripassare. Rileggi attentamente i tab Filosofia, Manzoni e Leopardi partendo dall\'inizio, poi rifai il test.';
+    color = 'var(--red)';
+  }
+  document.getElementById('quiz-container').innerHTML = `
     <div class="quiz-score">
-      <div class="quiz-score-num">${pct}%</div>
-      <div class="quiz-score-label">${score} / ${currentQuestions.length} — ${msg}</div>
-      <button class="quiz-btn primary" style="margin:0 auto;display:block" onclick="startQuiz()">↺ Rifai il quiz</button>
+      <div class="quiz-score-num" style="color:${color}">${score}/${questions.length}</div>
+      <div class="quiz-score-label">Risultato – ${pct}%</div>
+      <div class="quiz-score-msg">${msg}</div>
+      <button class="quiz-restart-btn" onclick="startQuiz()">🔄 Riprova questa categoria</button>
     </div>`;
 }
 </script>
-
 </body>
 </html>
